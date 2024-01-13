@@ -21,8 +21,7 @@
             android:id="@+id/ivPopularMovie"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            tools:ignore="ContentDescription" />
+            android:scaleType="centerCrop"/>
 
     </androidx.cardview.widget.CardView>
 
@@ -43,7 +42,7 @@
         app:layout_constraintTop_toBottomOf="@+id/card_view" />
 
     <TextView
-        android:id="@+id/rating_tv"
+        android:id="@+id/tvRating"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:maxLines="1"

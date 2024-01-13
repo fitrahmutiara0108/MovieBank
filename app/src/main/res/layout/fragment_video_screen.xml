@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools">
+
     <ProgressBar
         android:id="@+id/progressVideoInfoScreen"
         style="@style/Widget.AppCompat.ProgressBar"
@@ -18,11 +19,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Andorid youtube player -->
     <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
         android:id="@+id/youtubeVideo"
         android:layout_width="match_parent"
         android:layout_height="380dp"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,6 +42,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/youtubeVideo"
         app:layout_constraintEnd_toEndOf="parent"
         app:tint="@color/black" />
+
     <ImageView
         android:id="@+id/fullExitScreen"
         android:layout_width="40dp"
@@ -55,12 +57,12 @@
         app:layout_constraintBottom_toBottomOf="@+id/youtubeVideo"
         app:layout_constraintEnd_toEndOf="parent"
         app:tint="@color/black" />
+
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvSimilarVideos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
+        android:layout_margin="20dp"
         android:text="Similar ones"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -69,15 +71,15 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:id="@+id/videos_rv"
+        android:id="@+id/rvSimilarVideos"
         android:layout_height="0dp"
         android:orientation="vertical"
         tools:listitem="@layout/item_video"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginTop="10dp"
+        android:layout_margin="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/tvSimilarVideos" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -64,8 +64,7 @@
             android:layout_height="30dp"
             android:layout_gravity="center_vertical"
             android:src="@drawable/baseline_account_circle_24"
-            app:tint="#FF3700B3"
-            app:layout_constraintStart_toStart="parent" />
+            app:tint="#FF3700B3" />
 
         <EditText
             android:id="@+id/etName"
@@ -103,8 +102,7 @@
             android:layout_height="30dp"
             android:layout_gravity="center_vertical"
             android:src="@drawable/email_svgrepo_com"
-            app:tint="#FF3700B3"
-            app:layout_constraintStart_toStart="parent"/>
+            app:tint="#FF3700B3" />
 
         <EditText
             android:id="@+id/etEmail"
@@ -142,8 +140,7 @@
             android:layout_height="30dp"
             android:layout_gravity="center_vertical"
             android:src="@drawable/baseline_ad_units_24"
-            app:tint="#FF3700B3"
-            app:layout_constraintStart_toStart="parent"/>
+            app:tint="#FF3700B3" />
 
         <EditText
             android:id="@+id/etPhoneNumber"
@@ -182,8 +179,7 @@
             android:layout_height="30dp"
             android:layout_gravity="center_vertical"
             android:src="@drawable/security_protection_lock_padlock_locked_svgrepo_com"
-            app:tint="#FF3700B3"
-            app:layout_constraintStart_toStart="parent" />
+            app:tint="#FF3700B3" />
 
         <EditText
             android:id="@+id/etPassword"

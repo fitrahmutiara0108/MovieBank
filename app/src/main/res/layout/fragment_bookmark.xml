@@ -22,42 +22,13 @@
             android:orientation="vertical">
 
             <include
-                android:id="@+id/navbar"
+                android:id="@+id/bookmark"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                layout="@layout/component_navbar" />
-
-            <include
-                android:id="@+id/search_bar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                layout="@layout/component_search_bar"
+                layout="@layout/component_bookmark"
                 android:layout_margin="20dp"/>
-
-            <include
-                android:id="@+id/popular_movies"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                layout="@layout/component_popular_movies"
-                android:layout_margin="20dp"/>
-
-            <include
-                android:id="@+id/recent_movies"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                layout="@layout/component_recent_movies"
-                android:layout_margin="20dp"/>
-
-            <include
-                android:id="@+id/bottom_navbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                layout="@layout/component_bottom_navbar" />
-
 
         </LinearLayout>
-
-
 
     </androidx.core.widget.NestedScrollView>
 

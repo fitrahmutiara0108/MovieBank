@@ -22,12 +22,6 @@
             android:orientation="vertical">
 
             <include
-                android:id="@+id/navbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                layout="@layout/component_navbar" />
-
-            <include
                 android:id="@+id/search_bar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -47,12 +41,6 @@
                 android:layout_height="wrap_content"
                 layout="@layout/component_recent_movies"
                 android:layout_margin="20dp"/>
-
-            <include
-                android:id="@+id/bottom_navbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                layout="@layout/component_bottom_navbar" />
 
 
         </LinearLayout>

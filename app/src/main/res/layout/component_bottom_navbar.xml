@@ -17,6 +17,7 @@
         android:gravity="center">
 
         <ImageView
+            android:id="@+id/homePage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
@@ -25,6 +26,7 @@
             app:tint="#FFFFFF"/>
 
         <ImageView
+            android:id="@+id/bookmarkPage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
@@ -34,6 +36,7 @@
             android:layout_marginLeft="100dp"/>
 
         <ImageView
+            android:id="@+id/profilePage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"

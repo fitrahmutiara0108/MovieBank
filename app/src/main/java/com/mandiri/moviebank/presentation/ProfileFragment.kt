@@ -1,15 +1,22 @@
 package com.mandiri.moviebank.presentation
 
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.mandiri.moviebank.databinding.FragmentProfileBinding
+import com.mandiri.moviebank.helper.SharedPrefHelper
+import com.mandiri.moviebank.presentation.home.LoginActivity
+import com.mandiri.moviebank.presentation.home.RegisterActivity
 
 class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
+    private lateinit var sharedPrefHelper: SharedPrefHelper
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,8 +29,24 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //nanti codenya disini ya ges
+        sharedPrefHelper = SharedPrefHelper(
+            requireActivity().getSharedPreferences(
+                "mypref",
+                AppCompatActivity.MODE_PRIVATE
+            )
+        )
+
+        val profileData = sharedPrefHelper.getProfileData()
+        binding.tvName.text = profileData.first
+        binding.tvEmail.text = profileData.second
+        binding.tvPhoneNumber.text = profileData.third
+
+        binding.btnLogout.setOnClickListener {
+            sharedPrefHelper.clearDataPref()
+            startActivity(Intent(requireContext(), LoginActivity::class.java))
+        }
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

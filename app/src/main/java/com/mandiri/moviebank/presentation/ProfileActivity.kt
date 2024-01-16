@@ -19,6 +19,8 @@ class ProfileActivity: AppCompatActivity() {
         val email = intent.getStringExtra(KEY_EMAIL_VALUE)
         val phone = intent.getStringExtra(KEY_PHONE_NUMBER_VALUE)
 
+        binding.tvProfileName.text = name
+        binding.tvProfileEmail.text = email
         binding.tvName.text = name
         binding.tvEmail.text = email
         binding.tvPhoneNumber.text = phone

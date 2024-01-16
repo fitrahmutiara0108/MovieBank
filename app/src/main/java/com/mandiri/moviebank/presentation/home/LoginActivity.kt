@@ -2,15 +2,14 @@ package com.mandiri.moviebank.presentation.home
 
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.mandiri.moviebank.databinding.ActivityLoginBinding
 import com.mandiri.moviebank.helper.SharedPrefHelper
 import java.util.UUID
-import javax.inject.Inject
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -18,6 +17,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var sharedPrefHelper: SharedPrefHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         val sharedPreferences: SharedPreferences = getSharedPreferences("mypref", MODE_PRIVATE)

@@ -6,8 +6,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.mandiri.moviebank.databinding.ActivityRegisterBinding
 import com.mandiri.moviebank.helper.SharedPrefHelper
-import com.mandiri.moviebank.presentation.ProfileActivity
-import com.mandiri.moviebank.presentation.ProfileFragment
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -18,6 +16,11 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.tvRegisterToLogin.setOnClickListener {
+            val intent = Intent(applicationContext, LoginActivity::class.java)
+            startActivity(intent)
+        }
 
         binding.btnRegister.setOnClickListener {
             handleRegister()
@@ -39,9 +42,6 @@ class RegisterActivity : AppCompatActivity() {
                 sharedPreferences.saveProfileData(nameValue, emailValue, phoneValue)
 
                 val intent = Intent(this@RegisterActivity, HomeMainActivity::class.java)
-//                intent.putExtra(KEY_NAME_VALUE, nameValue)
-//                intent.putExtra(KEY_EMAIL_VALUE, emailValue)
-//                intent.putExtra(KEY_PHONE_NUMBER_VALUE, phoneValue)
                 startActivity(intent)
             }
         }

@@ -7,11 +7,11 @@
 
     <ImageView
         android:id="@+id/ivLoginLogo"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="50dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
         android:foregroundGravity="center"
-        android:src="@drawable/ic_launcher_background"
+        android:src="@drawable/ic_movie"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -63,11 +63,11 @@
 
         <ImageView
             android:id="@+id/ivEmail"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_gravity="center_vertical"
             android:src="@drawable/email_svgrepo_com"
-            app:tint="#FF3700B3" />
+            app:tint="@color/primary" />
 
         <EditText
             android:id="@+id/etEmail"
@@ -101,11 +101,11 @@
 
         <ImageView
             android:id="@+id/ivPassword"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_gravity="center_vertical"
             android:src="@drawable/security_protection_lock_padlock_locked_svgrepo_com"
-            app:tint="#FF3700B3" />
+            app:tint="@color/primary" />
 
         <EditText
             android:id="@+id/etPassword"

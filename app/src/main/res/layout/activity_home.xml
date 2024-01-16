@@ -54,10 +54,7 @@
                 android:layout_height="wrap_content"
                 layout="@layout/component_bottom_navbar" />
 
-
         </LinearLayout>
-
-
 
     </androidx.core.widget.NestedScrollView>
 

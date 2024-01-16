@@ -14,7 +14,7 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme.MovieAppForPdp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.MovieApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">#333333</item>
         <item name="colorPrimaryVariant">#4E4D50</item>
@@ -28,7 +28,7 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme.MovieAppForPdp.Fullscreen">
+    <style name="Theme.MovieBank.Fullscreen">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowTranslucentStatus">true</item>

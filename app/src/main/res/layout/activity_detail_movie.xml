@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:theme="@style/Theme.MovieApp">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
@@ -55,22 +56,22 @@
                     android:padding="6dp">
 
                     <ImageView
-                        android:id="@+id/back_iv"
+                        android:id="@+id/ivBack"
                         android:layout_width="44dp"
                         android:layout_height="44dp"
                         android:padding="6dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/baseline_arrow_back_24"
-                        app:tint="#FFFFFF"
+                        app:tint="@color/white"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:ignore="ContentDescription" />
 
                     <TextView
-                        android:id="@+id/toolbar_title_tv"
+                        android:id="@+id/tvMovieTitle"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_alignTop="@id/duration_tv"
+                        android:layout_alignTop="@id/tvDuration"
                         android:layout_marginStart="50dp"
                         android:ellipsize="marquee"
                         android:focusable="true"
@@ -81,42 +82,43 @@
                         android:singleLine="true"
                         android:textColor="@color/white"
                         android:textSize="22sp"
-                        app:layout_constraintEnd_toStartOf="@id/play_iv"
-                        app:layout_constraintStart_toEndOf="@id/back_iv"
+                        app:layout_constraintEnd_toStartOf="@id/ivPlay"
+                        app:layout_constraintStart_toEndOf="@id/ivBack"
                         app:layout_constraintTop_toTopOf="parent"
                         android:text="Movie Title"/>
 
                     <TextView
-                        android:id="@+id/duration_tv"
+                        android:id="@+id/tvDuration"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:textColor="@color/white"
                         android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="@id/toolbar_title_tv"
-                        app:layout_constraintStart_toStartOf="@id/toolbar_title_tv"
-                        app:layout_constraintTop_toBottomOf="@id/toolbar_title_tv" />
+                        app:layout_constraintEnd_toEndOf="@id/tvMovieTitle"
+                        app:layout_constraintStart_toStartOf="@id/tvMovieTitle"
+                        app:layout_constraintTop_toBottomOf="@id/tvMovieTitle"
+                        android:text="Movie Duration"/>
 
                     <ImageView
-                        android:id="@+id/play_iv"
+                        android:id="@+id/ivPlay"
                         android:layout_width="44dp"
                         android:layout_height="44dp"
                         android:layout_marginEnd="4dp"
                         android:padding="6dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/ic_baseline_play_circle_outline_24"
-                        app:layout_constraintEnd_toStartOf="@id/save_iv"
-                        app:layout_constraintTop_toTopOf="@id/save_iv"
+                        app:layout_constraintEnd_toStartOf="@id/ivBookmark"
+                        app:layout_constraintTop_toTopOf="@id/ivBookmark"
                         tools:ignore="ContentDescription" />
 
                     <ImageView
-                        android:id="@+id/save_iv"
+                        android:id="@+id/ivBookmark"
                         android:layout_width="44dp"
                         android:layout_height="44dp"
                         android:padding="6dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/bookmark_svgrepo_com"
-                        app:tint="#FFFFFF"
+                        app:tint="@color/white"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:ignore="ContentDescription" />
@@ -125,6 +127,13 @@
 
             </androidx.appcompat.widget.Toolbar>
 
+            <ProgressBar
+                android:id="@+id/progress_bar_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:indeterminateTint="@color/black" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
@@ -135,7 +144,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="-36dp"
-        android:background="@drawable/layout_background"
+        android:background="@drawable/layout_back"
         android:elevation="5dp"
         android:fillViewport="true"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
@@ -145,7 +154,7 @@
             android:layout_height="match_parent">
 
             <LinearLayout
-                android:id="@+id/all_data_view"
+                android:id="@+id/vAllData"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
@@ -155,7 +164,7 @@
                 app:layout_constraintBottom_toBottomOf="parent">
 
                 <TextView
-                    android:id="@+id/title_tv"
+                    android:id="@+id/tvTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingVertical="14dp"
@@ -164,7 +173,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/genre_tv"
+                    android:id="@+id/tvGenre"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingVertical="4dp"
@@ -172,7 +181,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/runtime_tv"
+                    android:id="@+id/tvRuntime"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingVertical="8dp"
@@ -180,7 +189,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/released_data_tv"
+                    android:id="@+id/tvReleasedDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingVertical="8dp"
@@ -188,7 +197,7 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/imdb_tv"
+                    android:id="@+id/tvImdb"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingVertical="8dp"
@@ -196,7 +205,7 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/budget_tv"
+                    android:id="@+id/tvBudget"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingVertical="8dp"
@@ -204,7 +213,7 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/description_tv"
+                    android:id="@+id/tvDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingVertical="8dp"
@@ -212,7 +221,7 @@
                     android:textSize="18sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/images_rv"
+                    android:id="@+id/rvMovieImages"
                     android:layout_width="match_parent"
                     android:layout_height="160dp"
                     android:orientation="horizontal"
@@ -228,7 +237,7 @@
                     android:textStyle="bold" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/actors_rv"
+                    android:id="@+id/rvActors"
                     android:layout_width="match_parent"
                     android:layout_height="160dp"
                     android:orientation="horizontal"
@@ -236,7 +245,7 @@
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
                 <TextView
-                    android:id="@+id/companies_tv"
+                    android:id="@+id/tvCompanies"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingVertical="8dp"
@@ -250,99 +259,5 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/play_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
-        android:scaleType="center"
-        android:src="@drawable/ic_outline_play_arrow_24"
-        android:translationY="-36dp"
-        app:borderWidth="0dp"
-        app:fabCustomSize="80dp"
-        app:layout_anchor="@id/appbar"
-        app:layout_anchorGravity="center|bottom"
-        app:maxImageSize="40dp"
-        tools:ignore="ContentDescription" />
-
-
-<!--    <eightbitlab.com.blurview.BlurView-->
-<!--        android:id="@+id/blurview"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:background="@drawable/blur_layout_back"-->
-<!--        android:elevation="6dp"-->
-<!--        android:orientation="horizontal"-->
-<!--        app:layout_anchor="@id/nested_scroll_view"-->
-<!--        app:layout_anchorGravity="bottom">-->
-
-<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent">-->
-
-<!--            <com.google.android.material.button.MaterialButton-->
-<!--                android:id="@+id/buy_ticket"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginVertical="30dp"-->
-<!--                android:backgroundTint="@color/black"-->
-<!--                android:elevation="0dp"-->
-<!--                android:paddingVertical="14dp"-->
-<!--                android:text="Buy Ticket"-->
-<!--                android:textAllCaps="true"-->
-<!--                android:textColor="@color/white"-->
-<!--                android:textSize="16sp"-->
-<!--                app:cornerRadius="16dp"-->
-<!--                app:elevation="0dp"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="@id/rating_progress_bar"-->
-<!--                app:layout_constraintHorizontal_bias="0.3"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:layout_constraintWidth_percent="0.55" />-->
-
-<!--            <ProgressBar-->
-<!--                android:id="@+id/rating_progress_bar"-->
-<!--                style="?android:attr/progressBarStyleHorizontal"-->
-<!--                android:layout_width="60dp"-->
-<!--                android:layout_height="60dp"-->
-
-<!--                android:max="100"-->
-<!--                android:progressDrawable="@drawable/circle_progress_bar"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintHorizontal_bias="0.88"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/progress_title_tv"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:maxLength="3"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:textSize="16sp"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintBottom_toBottomOf="@id/rating_progress_bar"-->
-<!--                app:layout_constraintEnd_toEndOf="@id/rating_progress_bar"-->
-<!--                app:layout_constraintStart_toStartOf="@id/rating_progress_bar"-->
-<!--                app:layout_constraintTop_toTopOf="@id/rating_progress_bar" />-->
-
-
-<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-
-<!--    </eightbitlab.com.blurview.BlurView>-->
-
-    <ProgressBar
-        android:id="@+id/progress_bar_detail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:elevation="10dp"
-        android:indeterminate="true"
-        android:indeterminateTint="@color/black"
-        app:layout_anchor="@id/appbar"
-        app:layout_anchorGravity="center" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,7 +1,6 @@
 package com.mandiri.moviebank.presentation.movie
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -18,15 +17,15 @@ import java.util.Locale
 import kotlin.math.ln
 import kotlin.math.pow
 
-class MovieDetailActivity : AppCompatActivity() {
+class MovieDetailActivity() : AppCompatActivity() {
     private lateinit var binding: ActivityDetailMovieBinding
-
     private lateinit var actorAdapter: ActorAdapter
-
-    private val viewModel: MovieDetailViewModel by viewModels()
     private lateinit var data: MovieDetailModel
 
-    private var movieId : Int? = 0
+    private val viewModel: MovieDetailViewModel by viewModels()
+
+    private var movieId: Int? = 0
+
     companion object {
         lateinit var instance: MovieDetailActivity
     }
@@ -55,24 +54,16 @@ class MovieDetailActivity : AppCompatActivity() {
     }
 
     private fun observeViewModel() {
-        viewModel.fullMovie.observe(this) { movieData ->
-            Log.d("ini test", movieData.toString())
-            if (movieData.isNotEmpty()) {
-                data = movieData[0]
-                setupViewMovieDetail()
-            } else {
-                // Handle the case where data is not available
-            }
-        }
+        viewModel.fullMovie.observe(this, { movie ->
+            data = movie
+            setupViewMovieDetail(movie)
+        })
         viewModel.authorsList.observe(this, { actors ->
             setupViewActor(actors)
         })
         viewModel.images.observe(this, { image ->
             setupViewImage(image)
         })
-//        viewModel.fullMovie.observe(this, { movie ->
-//            setupViewMovieDetail()
-//        })
 
     }
 
@@ -81,31 +72,38 @@ class MovieDetailActivity : AppCompatActivity() {
         binding.rvActors.adapter = actorAdapter
     }
 
-    private fun setupViewImage(data: List<Backdrop>){
+    private fun setupViewImage(data: List<Backdrop>) {
         val imageAdapter = ImageAdapter(data)
         binding.rvMovieImages.adapter = imageAdapter
     }
 
-    private fun setupViewMovieDetail(){
-//        if (::data.isInitialized) { // Check if data is initialized
-            binding.tvMovieTitle.text = data.original_title
-            binding.tvDuration.text = "${data.runtime} minutes"
-            if(binding.tvBudget != null){
-                binding.tvBudget.text = "Budget: $${numberFormatter(data.budget.toLong())}"
-            } else {
-                binding.tvBudget.visibility = View.GONE
-            }
-            binding.tvGenre.text = data.genres.toString()
-            binding.tvCompanies.text = "Production companies: ${data.production_companies}"
-            binding.tvDescription.text = data.overview
-            data.imdb_id?.let { binding.tvImdb.text = "IMDb: "+it.subSequence(2, data.imdb_id!!.length) }
-//            binding.tvImdb.text = data.imdb_id
-            binding.tvReleasedDate.text = "Released: ${dataFormatter(data.release_date)}"
-            binding.tvRuntime.text = "Runtime: ${data.runtime /60} h ${data.runtime %60} min"
-//            binding.tvRuntime.text = data.runtime.toString()
-            Glide.with(this)
-                .load("https://image.tmdb.org/t/p/w500/${data.poster_path}")
-                .into(binding.ivImage)
+    private fun setupViewMovieDetail(movie: MovieDetailModel) {
+        binding.tvMovieTitle.text = data.title
+        binding.tvDuration.text = "${data.runtime} minutes"
+        if (binding.tvBudget != null) {
+            binding.tvBudget.text = "Budget: ${numberFormatter(data.budget.toLong())}"
+        } else {
+            binding.tvBudget.visibility = View.GONE
+        }
+        val genre = StringBuilder()
+        data.genres.forEachIndexed { index, g ->
+            genre.append("${g.name}" + if (index != data.genres.size - 1) ", " else "")
+        }
+        binding.tvGenre.text = "Genres: $genre"
+        val companies = StringBuilder()
+        data.production_companies.forEachIndexed { index, prCompany ->
+            companies.append("\n${prCompany.name}" + if (index != data.production_companies.size - 1) ", " else "")
+        }
+        binding.tvCompanies.text = "Production companies: $companies"
+        binding.tvDescription.text = data.overview
+        data.imdb_id?.let {
+            binding.tvImdb.text = "IMDb: " + it.subSequence(2, data.imdb_id!!.length)
+        }
+        binding.tvReleasedDate.text = "Released: ${dataFormatter(data.release_date)}"
+        binding.tvRuntime.text = "Runtime: ${data.runtime / 60} h ${data.runtime % 60} min"
+        Glide.with(this)
+            .load("https://image.tmdb.org/t/p/w500/${data.poster_path}")
+            .into(binding.ivImage)
     }
 
     private fun numberFormatter(count: Long): String {
@@ -118,7 +116,7 @@ class MovieDetailActivity : AppCompatActivity() {
         )
     }
 
-    private fun dataFormatter(data:String): String {
+    private fun dataFormatter(data: String): String {
         val incomingDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH)
         val showedDateFormat = SimpleDateFormat("dd MMMM yyyy", Locale.ENGLISH)
         val date = incomingDateFormat.parse(data)

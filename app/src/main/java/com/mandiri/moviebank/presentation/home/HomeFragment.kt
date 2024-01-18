@@ -11,16 +11,20 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mandiri.moviebank.adapter.PopularMovieAdapter
-import com.mandiri.moviebank.adapter.RecentMovieAdapter
+import com.mandiri.moviebank.adapter.TopMovieAdapter
 import com.mandiri.moviebank.databinding.FragmentHomeBinding
 import com.mandiri.moviebank.model.PopularMovieModel
-import com.mandiri.moviebank.model.RecentMovieModel
-import com.mandiri.moviebank.presentation.MovieDetailActivity
+import com.mandiri.moviebank.model.TopMovieModel
+import com.mandiri.moviebank.presentation.SearchFragment
 import com.mandiri.moviebank.presentation.home.viewmodel.HomeViewModel
+import com.mandiri.moviebank.presentation.movie.MovieDetailActivity
 
-class HomeFragment : Fragment() {
+class HomeFragment(private val fragmentReplacer: (Fragment) -> Unit) : Fragment() {
     private var _binding: FragmentHomeBinding? = null
+
+    //    private var _search: FragmentSearchBinding?= null
     private val binding get() = _binding!!
+//    private val search get() = _search!!
 
     private val viewModel: HomeViewModel by viewModels()
 
@@ -32,35 +36,43 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
-    private fun setupView(){
+    private fun setupView() {
         viewModel.setData()
-
         observeViewModel()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.searchBar.ivSearch.setOnClickListener {
+//            navigateToSearch(requireActivity())
+            fragmentReplacer(SearchFragment())
+        }
         setupView()
     }
 
+
     private fun observeViewModel() {
         viewModel.homePopularMovie.observe(viewLifecycleOwner) {
-//            dataPopularMovie = it
             setupViewPopularMovie(it)
 
         }
-        viewModel.homeRecentMovie.observe(viewLifecycleOwner) {
-            setupViewRecentMovie(it)
+        viewModel.homeTopMovie.observe(viewLifecycleOwner) {
+            setupViewTopMovie(it)
         }
     }
 
-    private fun setupViewPopularMovie(data: MutableList<PopularMovieModel>) {
+
+    private fun setupViewPopularMovie(data: List<PopularMovieModel>) {
         val popularMovieAdapter = PopularMovieAdapter()
         popularMovieAdapter.setDataPopularMovie(data)
 
-        popularMovieAdapter.itemClickListener {
-            movieId -> navigateToDetailMovie(requireActivity(), movieId) }
+        popularMovieAdapter.itemClickListener { movieId ->
+            navigateToDetailMovie(
+                requireActivity(),
+                movieId
+            )
+        }
 
         binding.popularMovies.rvPopularMovie.apply {
             adapter = popularMovieAdapter
@@ -68,19 +80,20 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun setupViewRecentMovie(data: MutableList<RecentMovieModel>) {
-        val recentMovieAdapter = RecentMovieAdapter()
-        recentMovieAdapter.setDataRecentMovie(data)
+    private fun setupViewTopMovie(data: List<TopMovieModel>) {
+        val topMovieAdapter = TopMovieAdapter()
+        topMovieAdapter.setDataTopMovie(data)
 
-        recentMovieAdapter.itemClickListener {
-            movieId -> navigateToDetailMovie(requireActivity(), movieId)
+        topMovieAdapter.itemClickListener { movieId ->
+            navigateToDetailMovie(requireActivity(), movieId)
         }
 
-        binding.recentMovies.rvRecentMovie.apply {
-            adapter = recentMovieAdapter
+        binding.topMovies.rvTopMovie.apply {
+            adapter = topMovieAdapter
             layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
         }
     }
+
 
     fun navigateToDetailMovie(activity: Activity, movieId: Int) =
         Intent().apply {
@@ -89,8 +102,16 @@ class HomeFragment : Fragment() {
             activity.startActivity(intent)
         }
 
+
+    fun navigateToSearch(activity: Activity) {
+        val intent = Intent(activity, SearchFragment::class.java)
+        activity.startActivity(intent)
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 }
+
+

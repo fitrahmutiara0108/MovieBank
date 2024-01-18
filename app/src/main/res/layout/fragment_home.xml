@@ -36,10 +36,10 @@
                 android:layout_margin="20dp"/>
 
             <include
-                android:id="@+id/recent_movies"
+                android:id="@+id/top_movies"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                layout="@layout/component_recent_movies"
+                layout="@layout/component_top_movies"
                 android:layout_margin="20dp"/>
 
 

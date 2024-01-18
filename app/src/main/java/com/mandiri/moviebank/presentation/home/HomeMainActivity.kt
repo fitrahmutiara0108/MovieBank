@@ -7,7 +7,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mandiri.moviebank.R
 import com.mandiri.moviebank.databinding.HomeMainActivityBinding
 import com.mandiri.moviebank.presentation.BookmarkFragment
-import com.mandiri.moviebank.presentation.ProfileFragment
+import com.mandiri.moviebank.presentation.profile.ProfileFragment
 
 //@AndroidEntryPoint
 class HomeMainActivity : AppCompatActivity() {
@@ -21,7 +21,7 @@ class HomeMainActivity : AppCompatActivity() {
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navigationHome -> {
-                    replaceFragment(HomeFragment())
+                    replaceFragment(HomeFragment(::replaceFragment))
                     return@OnNavigationItemSelectedListener true
                 }
 

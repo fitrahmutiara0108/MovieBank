@@ -1,4 +1,4 @@
-package com.mandiri.moviebank.presentation.home
+package com.mandiri.moviebank.presentation.auth
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.mandiri.moviebank.databinding.ActivityRegisterBinding
 import com.mandiri.moviebank.helper.SharedPrefHelper
+import com.mandiri.moviebank.presentation.home.HomeMainActivity
 
 class RegisterActivity : AppCompatActivity() {
 

@@ -2,35 +2,34 @@ package com.mandiri.moviebank.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.mandiri.moviebank.R
+import com.mandiri.moviebank.data.network.response.Cast
 import com.mandiri.moviebank.databinding.ItemImageBinding
-import com.mandiri.moviebank.model.MovieDetailModel
 
-class ActorAdapter : RecyclerView.Adapter<ActorAdapter.ViewHolder>() {
-    private var data: MutableList<MovieDetailModel> = mutableListOf()
-    private lateinit var itemClickListener: ((Int) -> Unit)
+class ActorAdapter(
+    private val data: List<Cast>
+) : RecyclerView.Adapter<ActorAdapter.ViewHolder>() {
+    private lateinit var itemClickListener:((ImageView,String,Int)->Unit)
 
-    fun itemClickListener(listener: ((Int) -> Unit)) {
-        itemClickListener = listener
-    }
-
-    fun setDataActor(movie: MutableList<MovieDetailModel>) {
-        this.data = movie
-        notifyDataSetChanged()
+    fun setItemClickListener(listener:((ImageView,String,Int)->Unit)){
+        itemClickListener=listener
     }
 
     inner class ViewHolder(private val binding: ItemImageBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: MovieDetailModel) {
-            itemView.apply {
-                binding.ivImage.setImageResource(data.actor_image)
-//                From response: cast
-//                itemView.apply {
-//                    Glide.with(context).load("https://image.tmdb.org/t/p/w500/"+data.profile_path).into(image_view_actors)
-//                    setOnClickListener {
-//                        listenerClick.invoke(image_view_actors,"https://image.tmdb.org/t/p/w500/"+data.profile_path,absoluteAdapterPosition)
-//                    }
-//                }
+        fun bind(data: Cast) {
+                itemView.apply {
+                    Glide.with(context)
+                        .load("https://image.tmdb.org/t/p/w500/"+data.profile_path)
+                        .placeholder(R.drawable.ic_movie)
+                        .error(R.drawable.cinema_play_screen_movie_svgrepo_com)
+                        .into(binding.ivImage)
+                    setOnClickListener {
+                        itemClickListener.invoke(binding.ivImage,"https://image.tmdb.org/t/p/w500/"+data.profile_path, adapterPosition)
+                }
             }
         }
 
@@ -46,7 +45,10 @@ class ActorAdapter : RecyclerView.Adapter<ActorAdapter.ViewHolder>() {
         )
     }
 
-    override fun getItemCount(): Int = data.size
+    override fun getItemCount(): Int {
+        val size = data.size
+        return size
+    }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(data[position])

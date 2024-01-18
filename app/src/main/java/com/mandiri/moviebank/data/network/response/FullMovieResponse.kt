@@ -16,7 +16,6 @@ data class FullMovieResponse(
     val popularity: Double? = null,
     val poster_path: String? = null,
     val production_companies: List<ProductionCompany>,
-
     val release_date: String,
     val revenue: Long? = null,
     val runtime: Int,

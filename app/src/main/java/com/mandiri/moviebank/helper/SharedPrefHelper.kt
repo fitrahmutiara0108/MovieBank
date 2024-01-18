@@ -1,8 +1,7 @@
 package com.mandiri.moviebank.helper
 
 import android.content.SharedPreferences
-import com.mandiri.moviebank.presentation.home.RegisterActivity
-import javax.inject.Inject
+import com.mandiri.moviebank.presentation.auth.RegisterActivity
 
 class SharedPrefHelper (private val sharedPreferences: SharedPreferences) {
 

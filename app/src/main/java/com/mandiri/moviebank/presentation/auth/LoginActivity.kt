@@ -1,4 +1,4 @@
-package com.mandiri.moviebank.presentation.home
+package com.mandiri.moviebank.presentation.auth
 
 import android.content.Intent
 import android.content.SharedPreferences
@@ -9,9 +9,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.mandiri.moviebank.databinding.ActivityLoginBinding
 import com.mandiri.moviebank.helper.SharedPrefHelper
+import com.mandiri.moviebank.presentation.home.HomeMainActivity
 import java.util.UUID
 
 class LoginActivity : AppCompatActivity() {
+//    private val loginViewModel: LoginViewModel by viewModels()
     private lateinit var binding: ActivityLoginBinding
 //    @Inject
     private lateinit var sharedPrefHelper: SharedPrefHelper

@@ -9,18 +9,17 @@
         android:id="@+id/card_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_margin="6dp"
         app:cardCornerRadius="24dp"
         app:cardElevation="6dp"
         app:layout_constraintHeight_percent="0.82"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.86">
+        app:layout_constraintWidth_percent="0.80">
 
         <ImageView
             android:id="@+id/ivPopularMovie"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:scaleType="centerCrop"/>
 
     </androidx.cardview.widget.CardView>

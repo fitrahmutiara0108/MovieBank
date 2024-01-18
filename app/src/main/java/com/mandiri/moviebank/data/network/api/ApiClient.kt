@@ -7,11 +7,11 @@ object ApiClient {
 
     private const val BASE_URL = "https://api.themoviedb.org/3/"
 
-    val movieApi: MovieApi by lazy {
+    val movieApiService: MovieApiService by lazy {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(MovieApi::class.java)
+            .create(MovieApiService::class.java)
     }
 }

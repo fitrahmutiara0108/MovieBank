@@ -9,6 +9,7 @@
     app:cardElevation="3dp">
 
     <ImageView
+        android:src="@drawable/ic_movie"
         android:id="@+id/ivImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

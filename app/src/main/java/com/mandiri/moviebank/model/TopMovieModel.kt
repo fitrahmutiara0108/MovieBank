@@ -4,7 +4,7 @@ import com.mandiri.moviebank.data.network.response.Genre
 import com.mandiri.moviebank.data.network.response.ProductionCompany
 import java.io.Serializable
 
-data class MovieDetailModel(
+data class TopMovieModel(
     val original_title: String,
     val vote_average: Double,
     val image: Int,
@@ -30,4 +30,5 @@ data class MovieDetailModel(
     val vote_count: Int,
     var isSaved: Boolean,
     var index: Int,
-) : Serializable
+): Serializable
+

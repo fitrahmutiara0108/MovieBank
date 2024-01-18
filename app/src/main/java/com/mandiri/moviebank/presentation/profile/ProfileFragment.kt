@@ -1,4 +1,4 @@
-package com.mandiri.moviebank.presentation
+package com.mandiri.moviebank.presentation.profile
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.mandiri.moviebank.databinding.FragmentProfileBinding
 import com.mandiri.moviebank.helper.SharedPrefHelper
-import com.mandiri.moviebank.presentation.home.LoginActivity
+import com.mandiri.moviebank.presentation.auth.LoginActivity
 
 class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null

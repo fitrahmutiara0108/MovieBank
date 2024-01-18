@@ -1,10 +1,10 @@
 package com.mandiri.moviebank.data.network.response
 
-import com.mandiri.moviebank.model.PopularMovieModel
+import com.mandiri.moviebank.model.TopMovieModel
 
-data class MovieResponse(
+data class TopMovieResponse(
     val page: Int,
-    val results: List<PopularMovieModel>,
+    val results: List<TopMovieModel>,
     val total_pages: Int,
     val total_results: Int
 )

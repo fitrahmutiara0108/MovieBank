@@ -1,11 +1,11 @@
-package com.mandiri.moviebank.presentation
+package com.mandiri.moviebank.presentation.profile
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.mandiri.moviebank.databinding.FragmentProfileBinding
-import com.mandiri.moviebank.presentation.home.RegisterActivity.Companion.KEY_EMAIL_VALUE
-import com.mandiri.moviebank.presentation.home.RegisterActivity.Companion.KEY_NAME_VALUE
-import com.mandiri.moviebank.presentation.home.RegisterActivity.Companion.KEY_PHONE_NUMBER_VALUE
+import com.mandiri.moviebank.presentation.auth.RegisterActivity.Companion.KEY_EMAIL_VALUE
+import com.mandiri.moviebank.presentation.auth.RegisterActivity.Companion.KEY_NAME_VALUE
+import com.mandiri.moviebank.presentation.auth.RegisterActivity.Companion.KEY_PHONE_NUMBER_VALUE
 
 class ProfileActivity: AppCompatActivity() {
     private lateinit var binding: FragmentProfileBinding

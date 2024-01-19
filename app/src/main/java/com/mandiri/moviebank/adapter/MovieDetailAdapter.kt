@@ -30,7 +30,6 @@ class MovieDetailAdapter(
                 binding.tvGenre.text = data.genres.toString()
                 binding.tvCompanies.text = data.production_companies.toString()
                 binding.tvDescription.text = data.overview
-                binding.tvImdb.text = data.imdb_id
                 binding.tvReleasedDate.text = data.release_date
                 binding.tvRuntime.text = data.runtime.toString()
 

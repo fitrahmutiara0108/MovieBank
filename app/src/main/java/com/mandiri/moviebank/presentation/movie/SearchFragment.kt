@@ -1,12 +1,14 @@
-package com.mandiri.moviebank.presentation
+package com.mandiri.moviebank.presentation.movie
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -15,8 +17,8 @@ import com.mandiri.moviebank.adapter.SearchMovieAdapter
 import com.mandiri.moviebank.databinding.FragmentSearchBinding
 import com.mandiri.moviebank.model.SearchMovieModel
 import com.mandiri.moviebank.presentation.home.viewmodel.HomeViewModel
-import com.mandiri.moviebank.presentation.movie.MovieDetailActivity
 import kotlinx.coroutines.launch
+
 
 class SearchFragment : Fragment() {
     private var _binding: FragmentSearchBinding? = null
@@ -43,6 +45,8 @@ class SearchFragment : Fragment() {
         binding.etSearch.setOnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 val query = v.text.toString().toLowerCase()
+
+                hideKeyboard()
 
 //                 Launch a coroutine
                 viewLifecycleOwner.lifecycleScope.launch {
@@ -86,4 +90,9 @@ class SearchFragment : Fragment() {
             intent.putExtra("MOVIE_ID", movieId)
             activity.startActivity(intent)
         }
+
+    private fun hideKeyboard() {
+        val imm = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(binding.etSearch.windowToken, 0)
+    }
 }

@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:hint="Titles, actors or topics"
+                android:hint="Search by title"
                 android:imeOptions="actionDone"
                 android:inputType="text"
                 android:maxLines="1"

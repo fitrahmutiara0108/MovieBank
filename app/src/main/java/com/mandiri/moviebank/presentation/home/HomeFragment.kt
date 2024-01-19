@@ -15,16 +15,14 @@ import com.mandiri.moviebank.adapter.TopMovieAdapter
 import com.mandiri.moviebank.databinding.FragmentHomeBinding
 import com.mandiri.moviebank.model.PopularMovieModel
 import com.mandiri.moviebank.model.TopMovieModel
-import com.mandiri.moviebank.presentation.SearchFragment
 import com.mandiri.moviebank.presentation.home.viewmodel.HomeViewModel
 import com.mandiri.moviebank.presentation.movie.MovieDetailActivity
+import com.mandiri.moviebank.presentation.movie.SearchFragment
 
 class HomeFragment(private val fragmentReplacer: (Fragment) -> Unit) : Fragment() {
     private var _binding: FragmentHomeBinding? = null
 
-    //    private var _search: FragmentSearchBinding?= null
     private val binding get() = _binding!!
-//    private val search get() = _search!!
 
     private val viewModel: HomeViewModel by viewModels()
 
@@ -45,7 +43,6 @@ class HomeFragment(private val fragmentReplacer: (Fragment) -> Unit) : Fragment(
         super.onViewCreated(view, savedInstanceState)
 
         binding.searchBar.ivSearch.setOnClickListener {
-//            navigateToSearch(requireActivity())
             fragmentReplacer(SearchFragment())
         }
         setupView()
@@ -101,12 +98,6 @@ class HomeFragment(private val fragmentReplacer: (Fragment) -> Unit) : Fragment(
             intent.putExtra("MOVIE_ID", movieId)
             activity.startActivity(intent)
         }
-
-
-    fun navigateToSearch(activity: Activity) {
-        val intent = Intent(activity, SearchFragment::class.java)
-        activity.startActivity(intent)
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()

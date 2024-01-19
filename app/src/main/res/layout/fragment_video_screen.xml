@@ -5,58 +5,44 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools">
 
-<!--    <ProgressBar-->
-<!--        android:id="@+id/progressVideoInfoScreen"-->
-<!--        style="@style/Widget.AppCompat.ProgressBar"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="center"-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        android:elevation="1dp"-->
-<!--        android:visibility="gone"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-    <!-- Andorid youtube player -->
+    <!-- Android youtube player -->
     <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
         android:id="@+id/youtubeVideo"
         android:layout_width="match_parent"
-        android:layout_height="380dp"
+        android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/fullScreen"
-        android:layout_width="40dp"
-        android:padding="10dp"
-        android:background="@drawable/bgblur"
-        android:layout_height="40dp"
-        android:scaleType="centerCrop"
-        android:layout_margin="10dp"
-        android:elevation="15dp"
-        android:src="@drawable/ic_baseline_fullscreen_24"
-        app:layout_constraintBottom_toBottomOf="@+id/youtubeVideo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:tint="@color/black" />
+<!--    <ImageView-->
+<!--        android:id="@+id/fullScreen"-->
+<!--        android:layout_width="40dp"-->
+<!--        android:padding="10dp"-->
+<!--        android:background="@drawable/bgblur"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:scaleType="centerCrop"-->
+<!--        android:layout_margin="10dp"-->
+<!--        android:elevation="15dp"-->
+<!--        android:src="@drawable/ic_baseline_fullscreen_24"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/youtubeVideo"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:tint="@color/black" />-->
 
-    <ImageView
-        android:id="@+id/fullExitScreen"
-        android:layout_width="40dp"
-        android:padding="10dp"
-        android:layout_height="40dp"
-        android:visibility="invisible"
-        android:scaleType="centerCrop"
-        android:background="@drawable/bgblur"
-        android:layout_margin="10dp"
-        android:elevation="15dp"
-        android:src="@drawable/ic_baseline_fullscreen_exit_24"
-        app:layout_constraintBottom_toBottomOf="@+id/youtubeVideo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:tint="@color/black" />
+<!--    <ImageView-->
+<!--        android:id="@+id/fullExitScreen"-->
+<!--        android:layout_width="40dp"-->
+<!--        android:padding="10dp"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:visibility="invisible"-->
+<!--        android:scaleType="centerCrop"-->
+<!--        android:background="@drawable/bgblur"-->
+<!--        android:layout_margin="10dp"-->
+<!--        android:elevation="15dp"-->
+<!--        android:src="@drawable/ic_baseline_fullscreen_exit_24"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/youtubeVideo"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:tint="@color/black" />-->
 
 <!--    <TextView-->
 <!--        android:id="@+id/tvSimilarVideos"-->

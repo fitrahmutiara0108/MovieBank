@@ -9,13 +9,8 @@ import com.mandiri.moviebank.databinding.HomeMainActivityBinding
 import com.mandiri.moviebank.presentation.BookmarkFragment
 import com.mandiri.moviebank.presentation.profile.ProfileFragment
 
-//@AndroidEntryPoint
 class HomeMainActivity : AppCompatActivity() {
     private lateinit var binding: HomeMainActivityBinding
-
-//    @Inject
-//    lateinit var sharedPrefHelper: SharedPrefHelper
-//    private lateinit var dialogConfirmation: ConfirmationDialogUtil
 
     private val onNavigationSelectedListener =
         BottomNavigationView.OnNavigationItemSelectedListener { item ->

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentTransaction
 import com.bumptech.glide.Glide
 import com.mandiri.moviebank.adapter.ActorAdapter
 import com.mandiri.moviebank.adapter.ImageAdapter
@@ -40,15 +41,21 @@ class MovieDetailActivity() : AppCompatActivity() {
             onBackPressed()
         }
 
+        binding.btnPlay.setOnClickListener {
+            playVideo()
+        }
+
+        binding.ivPlay.setOnClickListener {
+            playVideo()
+        }
+
         movieId = intent.getIntExtra("MOVIE_ID", -1)
-//        viewModel.loadDataById(movieId ?: 0)
 
         setupView()
     }
 
     private fun setupView() {
         viewModel.setData(movieId ?: 0)
-//        viewModel.loadAuthorsDataById(movieId ?: 0)
 
         observeViewModel()
     }
@@ -80,6 +87,7 @@ class MovieDetailActivity() : AppCompatActivity() {
     private fun setupViewMovieDetail(movie: MovieDetailModel) {
         binding.tvMovieTitle.text = data.title
         binding.tvDuration.text = "${data.runtime} minutes"
+        binding.tvTitle.text = data.original_title
         if (binding.tvBudget != null) {
             binding.tvBudget.text = "Budget: ${numberFormatter(data.budget.toLong())}"
         } else {
@@ -92,17 +100,13 @@ class MovieDetailActivity() : AppCompatActivity() {
         binding.tvGenre.text = "Genres: $genre"
         val companies = StringBuilder()
         data.production_companies.forEachIndexed { index, prCompany ->
-            companies.append("\n${prCompany.name}" + if (index != data.production_companies.size - 1) ", " else "")
+            companies.append("${prCompany.name}" + if (index != data.production_companies.size - 1) ", " else " ")
         }
         binding.tvCompanies.text = "Production companies: $companies"
         binding.tvDescription.text = data.overview
-        data.imdb_id?.let {
-            binding.tvImdb.text = "IMDb: " + it.subSequence(2, data.imdb_id!!.length)
-        }
-        binding.tvReleasedDate.text = "Released: ${dataFormatter(data.release_date)}"
+        binding.tvReleasedDate.text = "Released: ${dateFormatter(data.release_date)}"
         binding.tvRuntime.text = "Runtime: ${data.runtime / 60} h ${data.runtime % 60} min"
-        Glide.with(this)
-            .load("https://image.tmdb.org/t/p/w500/${data.poster_path}")
+        Glide.with(this).load("https://image.tmdb.org/t/p/w500/${data.poster_path}")
             .into(binding.ivImage)
     }
 
@@ -110,17 +114,23 @@ class MovieDetailActivity() : AppCompatActivity() {
         if (count < 1000) return "" + count
         val exp = (ln(count.toDouble()) / ln(1000.0)).toInt()
         return String.format(
-            "%.1f %c",
-            count / 1000.0.pow(exp.toDouble()),
-            "kMGTPE"[exp - 1]
+            "%.1f %c", count / 1000.0.pow(exp.toDouble()), "kMGTPE"[exp - 1]
         )
     }
 
-    private fun dataFormatter(data: String): String {
+    private fun dateFormatter(data: String): String {
         val incomingDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH)
         val showedDateFormat = SimpleDateFormat("dd MMMM yyyy", Locale.ENGLISH)
         val date = incomingDateFormat.parse(data)
         return showedDateFormat.format(date)
+    }
+
+    fun playVideo() {
+        val playVideoFragment = PlayVideoFragment.newInstance(movieId ?: 0)
+        val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
+
+        transaction.replace(android.R.id.content, playVideoFragment)
+        transaction.commit()
     }
 
 

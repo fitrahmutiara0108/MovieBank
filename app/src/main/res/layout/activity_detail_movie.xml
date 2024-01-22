@@ -84,8 +84,7 @@
                         android:textSize="22sp"
                         app:layout_constraintEnd_toStartOf="@id/ivPlay"
                         app:layout_constraintStart_toEndOf="@id/ivBack"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:text="Movie Title"/>
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/tvDuration"
@@ -96,8 +95,7 @@
                         android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="@id/tvMovieTitle"
                         app:layout_constraintStart_toStartOf="@id/tvMovieTitle"
-                        app:layout_constraintTop_toBottomOf="@id/tvMovieTitle"
-                        android:text="Movie Duration"/>
+                        app:layout_constraintTop_toBottomOf="@id/tvMovieTitle" />
 
                     <ImageView
                         android:id="@+id/ivPlay"
@@ -126,14 +124,6 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.appcompat.widget.Toolbar>
-
-<!--            <ProgressBar-->
-<!--                android:id="@+id/progress_bar_detail"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:layout_marginTop="30dp"-->
-<!--                android:indeterminateTint="@color/black" />-->
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
@@ -170,8 +160,7 @@
                     android:paddingVertical="14dp"
                     android:textColor="#222222"
                     android:textSize="24sp"
-                    android:textStyle="bold"
-                    android:text="Movie Title"/>
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvGenre"
@@ -179,8 +168,7 @@
                     android:layout_height="wrap_content"
                     android:paddingVertical="4dp"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:text="genre"/>
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvRuntime"
@@ -188,32 +176,28 @@
                     android:layout_height="wrap_content"
                     android:paddingVertical="8dp"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:text="runtime"/>
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvReleasedDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="5dp"
-                    android:textColor="#555555"
-                    android:text="released date"/>
+                    android:textColor="#555555" />
 
                 <TextView
                     android:id="@+id/tvCompanies"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="5dp"
-                    android:textColor="#555555"
-                    android:text="companies"/>
+                    android:textColor="#555555" />
 
                 <TextView
                     android:id="@+id/tvBudget"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="5dp"
-                    android:textColor="#555555"
-                    android:text="budget"/>
+                    android:textColor="#555555" />
 
                 <TextView
                     android:id="@+id/tvDescription"
@@ -221,8 +205,7 @@
                     android:layout_height="wrap_content"
                     android:paddingVertical="8dp"
                     android:textColor="#555555"
-                    android:textSize="18sp"
-                    android:text="description"/>
+                    android:textSize="18sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvMovieImages"
@@ -266,5 +249,13 @@
         app:layout_anchorGravity="center|bottom"
         app:maxImageSize="40dp"
         tools:ignore="ContentDescription" />
+
+    <ProgressBar
+        android:id="@+id/progresBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:indeterminateTint="@color/black" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

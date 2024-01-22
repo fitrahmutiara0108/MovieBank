@@ -57,10 +57,18 @@ class MovieDetailActivity() : AppCompatActivity() {
     }
 
     private fun setupView() {
-        viewModel.setData(movieId ?: 0)
+        viewModel.progress.observe(this, { isLoading ->
+            if (isLoading) {
+                binding.progresBar.visibility = View.VISIBLE
+            } else {
+                binding.progresBar.visibility = View.GONE
+            }
+        })
 
+        viewModel.setData(movieId ?: 0)
         observeViewModel()
     }
+
 
     private fun observeViewModel() {
         viewModel.fullMovie.observe(this, { movie ->

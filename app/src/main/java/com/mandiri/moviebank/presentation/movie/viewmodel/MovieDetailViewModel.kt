@@ -1,6 +1,5 @@
 package com.mandiri.moviebank.presentation.movie.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,7 +12,7 @@ import com.mandiri.moviebank.data.repository.MovieDetailRepository
 import com.mandiri.moviebank.model.MovieDetailModel
 import kotlinx.coroutines.launch
 
-class MovieDetailViewModel: ViewModel() {
+class MovieDetailViewModel : ViewModel() {
     private val _fullMovie = MutableLiveData<MovieDetailModel>()
     private val _progress = MutableLiveData<Boolean>()
     private val _authorsList = MutableLiveData<List<Cast>>()
@@ -31,17 +30,19 @@ class MovieDetailViewModel: ViewModel() {
     private val movieRepository = MovieDetailRepository(ApiClient.movieApiService)
 
     fun setData(id: Int) {
+        _progress.postValue(true)
+
         viewModelScope.launch {
-            val getAuthor = movieRepository.getAuthorsById(id).body()?.cast
-            val getImage = movieRepository.getMovieImages(id).backdrops
-            val getDetailMovie = movieRepository.getMovieById(id).body()
-            _authorsList.postValue(getAuthor?: listOf())
-            _images.postValue(getImage)
-            if (getDetailMovie == null)
-                Log.d("ini test", "error Move Detail VM")
-            else
-                _fullMovie.postValue(getDetailMovie!!)
-            _video.postValue(movieRepository.getVideosById(id).body()?.results)
+            try{
+                _authorsList.postValue(movieRepository.getAuthorsById(id).body()?.cast)
+                _images.postValue(movieRepository.getMovieImages(id).backdrops)
+                _fullMovie.postValue(movieRepository.getMovieById(id).body())
+                _video.postValue(movieRepository.getVideosById(id).body()?.results)
+            } catch(e: Exception){
+                //error handling
+            } finally {
+                _progress.postValue(false)
+            }
         }
     }
 }

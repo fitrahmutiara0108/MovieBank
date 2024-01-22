@@ -1,241 +1,238 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="20dp">
+    android:orientation="vertical">
 
-<!--    <ImageView-->
-<!--        android:id="@+id/ivBack"-->
-<!--        android:layout_width="24dp"-->
-<!--        android:layout_height="24dp"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        android:src="@drawable/baseline_arrow_back_24"-->
-<!--        app:tint="#FF3700B3"/>-->
-
-    <TextView
-        android:id="@+id/tvCreateAccount"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:padding="10dp"
-        android:text="Create Account"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:textColor="@color/primary"/>
-
-    <TextView
-        android:id="@+id/tvSignUp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvCreateAccount"
-        android:text="Create a new account"
-        android:textColor="@color/disabled"/>
-
-    <!-- Username -->
-    <TextView
-        android:id="@+id/tvName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSignUp"
-        android:text="Name"
-        android:layout_marginTop="50dp"/>
-    <LinearLayout
-        android:id="@+id/vName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvName"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/ivName"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/baseline_account_circle_24"
-            app:tint="@color/primary" />
-
-        <EditText
-            android:id="@+id/etName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:layout_constraintStart_toEndOf="@id/ivName"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginLeft="15dp"/>
-
-    </LinearLayout>
-
-    <!-- Email -->
-    <TextView
-        android:id="@+id/tvEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vName"
-        android:text="Email"
-        android:layout_marginTop="20dp"/>
-    <LinearLayout
-        android:id="@+id/vEmail"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvEmail"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/ivEmail"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/email_svgrepo_com"
-            app:tint="@color/primary" />
-
-        <EditText
-            android:id="@+id/etEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:layout_constraintStart_toEndOf="@id/ivEmail"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginLeft="15dp"/>
-
-    </LinearLayout>
-
-    <!-- Phone Number -->
-    <TextView
-        android:id="@+id/tvPhoneNumber"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vEmail"
-        android:text="Phone Number"
-        android:layout_marginTop="20dp"/>
-    <LinearLayout
-        android:id="@+id/vPhoneNumber"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPhoneNumber"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/ivPhoneNumber"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/baseline_ad_units_24"
-            app:tint="@color/primary" />
-
-        <EditText
-            android:id="@+id/etPhoneNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:layout_constraintStart_toEndOf="@id/ivPhoneNumber"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginLeft="15dp"
-            android:inputType="phone"/>
-
-    </LinearLayout>
-
-    <!-- Password -->
-    <TextView
-        android:id="@+id/tvPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Password"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vPhoneNumber" />
-    <LinearLayout
-        android:id="@+id/vPassword"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPassword">
-
-        <ImageView
-            android:id="@+id/ivPassword"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/security_protection_lock_padlock_locked_svgrepo_com"
-            app:tint="@color/primary" />
-
-        <EditText
-            android:id="@+id/etPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_weight="1"
-            android:inputType="textPassword"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/ivEmail" />
-
-    </LinearLayout>
-
-    <!--  Register Button  -->
-    <Button
-        android:id="@+id/btnRegister"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/vPassword"
-        android:layout_marginTop="30dp"
-        android:text="CREATE ACCOUNT"
-        android:backgroundTint="@color/primary"/>
-
-    <!--  Sign in Link -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnRegister"
-        android:gravity="center"
-        android:layout_marginTop="20dp">
+        android:layout_height="match_parent"
+        android:layout_margin="20dp">
 
         <TextView
-            android:id="@+id/tvLeftText"
-            android:layout_width="wrap_content"
+            android:id="@+id/tvCreateAccount"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Already have an account?"
-            android:layout_marginRight="5dp"
-            android:gravity="center" />
-
-        <TextView
-            android:id="@+id/tvRegisterToLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Login"
             android:gravity="center_horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:padding="10dp"
+            android:text="Create Account"
+            android:textSize="25sp"
+            android:textStyle="bold"
             android:textColor="@color/primary"/>
 
+        <TextView
+            android:id="@+id/tvSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvCreateAccount"
+            android:text="Create a new account"
+            android:textColor="@color/disabled"/>
 
-    </LinearLayout>
+        <!-- Username -->
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSignUp"
+            android:text="Name"
+            android:layout_marginTop="50dp"/>
+        <LinearLayout
+            android:id="@+id/vName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvName"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ivName"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/baseline_account_circle_24"
+                app:tint="@color/primary" />
+
+            <EditText
+                android:id="@+id/etName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:layout_constraintStart_toEndOf="@id/ivName"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginLeft="15dp"/>
+
+        </LinearLayout>
+
+        <!-- Email -->
+        <TextView
+            android:id="@+id/tvEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vName"
+            android:text="Email"
+            android:layout_marginTop="20dp"/>
+        <LinearLayout
+            android:id="@+id/vEmail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvEmail"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ivEmail"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/email_svgrepo_com"
+                app:tint="@color/primary" />
+
+            <EditText
+                android:id="@+id/etEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:layout_constraintStart_toEndOf="@id/ivEmail"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginLeft="15dp"/>
+
+        </LinearLayout>
+
+        <!-- Phone Number -->
+        <TextView
+            android:id="@+id/tvPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vEmail"
+            android:text="Phone Number"
+            android:layout_marginTop="20dp"/>
+        <LinearLayout
+            android:id="@+id/vPhoneNumber"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPhoneNumber"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ivPhoneNumber"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/baseline_ad_units_24"
+                app:tint="@color/primary" />
+
+            <EditText
+                android:id="@+id/etPhoneNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:layout_constraintStart_toEndOf="@id/ivPhoneNumber"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginLeft="15dp"
+                android:inputType="phone"/>
+
+        </LinearLayout>
+
+        <!-- Password -->
+        <TextView
+            android:id="@+id/tvPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Password"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vPhoneNumber" />
+        <LinearLayout
+            android:id="@+id/vPassword"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPassword">
+
+            <ImageView
+                android:id="@+id/ivPassword"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/security_protection_lock_padlock_locked_svgrepo_com"
+                app:tint="@color/primary" />
+
+            <EditText
+                android:id="@+id/etPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_weight="1"
+                android:inputType="textPassword"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ivEmail" />
+
+        </LinearLayout>
+
+        <!--  Register Button  -->
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/vPassword"
+            android:layout_marginTop="30dp"
+            android:text="CREATE ACCOUNT"
+            android:backgroundTint="@color/primary"/>
+
+        <!--  Sign in Link -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnRegister"
+            android:gravity="center"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:id="@+id/tvLeftText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Already have an account?"
+                android:layout_marginRight="5dp"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/tvRegisterToLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Login"
+                android:gravity="center_horizontal"
+                android:textColor="@color/primary"/>
+
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

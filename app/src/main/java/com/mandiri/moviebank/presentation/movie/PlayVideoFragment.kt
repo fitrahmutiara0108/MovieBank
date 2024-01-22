@@ -1,4 +1,3 @@
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -46,9 +45,11 @@ class PlayVideoFragment : Fragment() {
 
         viewModel.video.observe(viewLifecycleOwner) { videos ->
             val teaserOrTrailer = videos.find { it.type == "Teaser" || it.type == "Trailer" }
+//            val clip = videos.find { it.type == "Clip" }
 
             if (teaserOrTrailer != null) {
-                youtubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
+                youtubePlayerView.addYouTubePlayerListener(object :
+                    AbstractYouTubePlayerListener() {
                     override fun onReady(youTubePlayer: YouTubePlayer) {
                         youTubePlayer.loadVideo(teaserOrTrailer.key, 0f)
                     }

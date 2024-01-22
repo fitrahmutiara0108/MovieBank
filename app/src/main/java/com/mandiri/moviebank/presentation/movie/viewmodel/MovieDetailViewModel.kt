@@ -11,12 +11,9 @@ import com.mandiri.moviebank.data.network.response.Cast
 import com.mandiri.moviebank.data.network.response.Result
 import com.mandiri.moviebank.data.repository.MovieDetailRepository
 import com.mandiri.moviebank.model.MovieDetailModel
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-class MovieDetailViewModel @Inject constructor(): ViewModel() {
+class MovieDetailViewModel: ViewModel() {
     private val _fullMovie = MutableLiveData<MovieDetailModel>()
     private val _progress = MutableLiveData<Boolean>()
     private val _authorsList = MutableLiveData<List<Cast>>()

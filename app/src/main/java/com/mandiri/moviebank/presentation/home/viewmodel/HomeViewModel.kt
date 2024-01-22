@@ -9,12 +9,10 @@ import com.mandiri.moviebank.data.repository.MovieRepository
 import com.mandiri.moviebank.model.PopularMovieModel
 import com.mandiri.moviebank.model.SearchMovieModel
 import com.mandiri.moviebank.model.TopMovieModel
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-class HomeViewModel @Inject constructor(): ViewModel() {
+
+class HomeViewModel: ViewModel() {
     private val _homePopularMovie = MutableLiveData<List<PopularMovieModel>>()
     private val _homeTopMovie = MutableLiveData<List<TopMovieModel>>()
     private val _searchedMovie = MutableLiveData<List<SearchMovieModel>>()

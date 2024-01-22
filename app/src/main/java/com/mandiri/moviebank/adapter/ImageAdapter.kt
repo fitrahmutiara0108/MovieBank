@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.mandiri.moviebank.R
 import com.mandiri.moviebank.data.network.response.Backdrop
 import com.mandiri.moviebank.databinding.ItemImageBinding
 
@@ -27,7 +28,11 @@ class ImageAdapter(
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: Backdrop) {
             itemView.apply {
-                Glide.with(context).load("https://image.tmdb.org/t/p/w500/"+data.file_path).into(binding.ivImage)
+                Glide.with(context)
+                    .load("https://image.tmdb.org/t/p/w500/"+data.file_path)
+                    .placeholder(R.drawable.ic_loading)
+                    .error(R.drawable.ic_error)
+                    .into(binding.ivImage)
                 setOnClickListener {
                     listenerClick.invoke(binding.ivImage,"https://image.tmdb.org/t/p/w500/"+data.file_path,adapterPosition)
                 }

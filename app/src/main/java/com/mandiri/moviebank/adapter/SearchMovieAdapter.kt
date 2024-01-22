@@ -4,7 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.mandiri.moviebank.databinding.ItemMovieBinding
+import com.mandiri.moviebank.R
+import com.mandiri.moviebank.databinding.ItemMovieSearchBinding
 import com.mandiri.moviebank.model.SearchMovieModel
 import java.text.DecimalFormat
 
@@ -21,11 +22,15 @@ class SearchMovieAdapter : RecyclerView.Adapter<SearchMovieAdapter.ViewHolder>()
         notifyDataSetChanged()
     }
 
-    inner class ViewHolder(private val binding: ItemMovieBinding) :
+    inner class ViewHolder(private val binding: ItemMovieSearchBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: SearchMovieModel) {
             itemView.apply {
-                Glide.with(context).load("https://image.tmdb.org/t/p/w500/" + data.poster_path).into(binding.ivRecentMovie)
+                Glide.with(context)
+                    .load("https://image.tmdb.org/t/p/w500/" + data.poster_path)
+                    .placeholder(R.drawable.ic_loading)
+                    .error(R.drawable.ic_error)
+                    .into(binding.ivRecentMovie)
                 binding.tvMovieTitle.text = data.title
                 val decimalFormat = DecimalFormat("#.#")
                 binding.tvRating.text = "Rating: ${decimalFormat.format(data.vote_average)}/10"
@@ -41,7 +46,7 @@ class SearchMovieAdapter : RecyclerView.Adapter<SearchMovieAdapter.ViewHolder>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            ItemMovieBinding.inflate(
+            ItemMovieSearchBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false

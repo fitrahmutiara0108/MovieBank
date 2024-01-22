@@ -1,11 +1,13 @@
 package com.mandiri.moviebank.presentation.movie
 
+import PlayVideoFragment
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
 import com.bumptech.glide.Glide
+import com.mandiri.moviebank.R
 import com.mandiri.moviebank.adapter.ActorAdapter
 import com.mandiri.moviebank.adapter.ImageAdapter
 import com.mandiri.moviebank.data.network.response.Backdrop
@@ -107,6 +109,8 @@ class MovieDetailActivity() : AppCompatActivity() {
         binding.tvReleasedDate.text = "Released: ${dateFormatter(data.release_date)}"
         binding.tvRuntime.text = "Runtime: ${data.runtime / 60} h ${data.runtime % 60} min"
         Glide.with(this).load("https://image.tmdb.org/t/p/w500/${data.poster_path}")
+            .placeholder(R.drawable.ic_loading)
+            .error(R.drawable.ic_error)
             .into(binding.ivImage)
     }
 

@@ -13,9 +13,7 @@ import com.mandiri.moviebank.presentation.home.HomeMainActivity
 import java.util.UUID
 
 class LoginActivity : AppCompatActivity() {
-//    private val loginViewModel: LoginViewModel by viewModels()
     private lateinit var binding: ActivityLoginBinding
-//    @Inject
     private lateinit var sharedPrefHelper: SharedPrefHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,11 +41,9 @@ class LoginActivity : AppCompatActivity() {
     private fun observeLoginSuccess(success: Boolean) {
         if (success) {
             Toast.makeText(applicationContext, "Berhasil", Toast.LENGTH_SHORT).show()
-//            handleVisibility(binding.tvErrorPassword, false)
             handleNavigation()
         } else {
             Toast.makeText(this@LoginActivity, "Gagal", Toast.LENGTH_SHORT).show()
-//            handleVisibility(binding.tvErrorPassword, true)
         }
     }
 
@@ -56,7 +52,13 @@ class LoginActivity : AppCompatActivity() {
             btnLogin.setOnClickListener {
                 val enteredPassword = etPassword.text.toString()
                 val enteredEmail = etEmail.text.toString()
-                login(enteredEmail, enteredPassword)
+
+                if(isEmailValid(enteredEmail)){
+                    login(enteredEmail, enteredPassword)
+                } else {
+                    Toast.makeText(this@LoginActivity, "Invalid email format", Toast.LENGTH_SHORT).show()
+                }
+
             }
 
             tvLoginToRegister.setOnClickListener {
@@ -92,5 +94,10 @@ class LoginActivity : AppCompatActivity() {
     private fun handleTo(clazz: Class<*>) {
         val intent = Intent(this, clazz)
         startActivity(intent)
+    }
+
+    private fun isEmailValid(email: String): Boolean {
+        val emailRegex = Regex("^\\S+@\\S+\\.\\S+\$")
+        return email.matches(emailRegex)
     }
 }

@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.mandiri.moviebank.R
 import com.mandiri.moviebank.databinding.ItemMovieBinding
 import com.mandiri.moviebank.model.TopMovieModel
 import java.text.DecimalFormat
@@ -28,7 +29,10 @@ class TopMovieAdapter : RecyclerView.Adapter<TopMovieAdapter.ViewHolder>() {
                 binding.tvMovieTitle.text = data.original_title
                 val decimalFormat = DecimalFormat("#.#")
                 binding.tvRating.text = "Rating: ${decimalFormat.format(data.vote_average)}/10"
-                Glide.with(context).load("https://image.tmdb.org/t/p/w500/${data.poster_path}")
+                Glide.with(context)
+                    .load("https://image.tmdb.org/t/p/w500/${data.poster_path}")
+                    .placeholder(R.drawable.ic_loading)
+                    .error(R.drawable.ic_error)
                     .into(binding.ivRecentMovie)
                 setOnClickListener {
                     data.apply {

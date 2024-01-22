@@ -24,8 +24,8 @@ class ActorAdapter(
                 itemView.apply {
                     Glide.with(context)
                         .load("https://image.tmdb.org/t/p/w500/"+data.profile_path)
-                        .placeholder(R.drawable.ic_movie)
-                        .error(R.drawable.cinema_play_screen_movie_svgrepo_com)
+                        .placeholder(R.drawable.ic_loading)
+                        .error(R.drawable.ic_error)
                         .into(binding.ivImage)
                     setOnClickListener {
                         itemClickListener.invoke(binding.ivImage,"https://image.tmdb.org/t/p/w500/"+data.profile_path, adapterPosition)

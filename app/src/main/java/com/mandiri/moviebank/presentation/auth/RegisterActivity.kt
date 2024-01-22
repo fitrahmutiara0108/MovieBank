@@ -36,9 +36,12 @@ class RegisterActivity : AppCompatActivity() {
             val phoneValue = etPhoneNumber.text.toString()
 
             if (nameValue.isEmpty() || emailValue.isEmpty() || phoneValue.isEmpty()) {
-                Toast.makeText(applicationContext, "Data tidak boleh kosong", Toast.LENGTH_SHORT)
+                Toast.makeText(applicationContext, "Data can't be empty", Toast.LENGTH_SHORT)
                     .show()
-            } else {
+            } else if (!isEmailValid(emailValue)){
+                Toast.makeText(applicationContext, "Invalid email", Toast.LENGTH_SHORT).show()
+            }
+            else {
                 sharedPreferences = SharedPrefHelper(getSharedPreferences("mypref", MODE_PRIVATE))
                 sharedPreferences.saveProfileData(nameValue, emailValue, phoneValue)
 
@@ -46,6 +49,11 @@ class RegisterActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
+    }
+
+    private fun isEmailValid(email: String): Boolean {
+        val emailRegex = Regex("^\\S+@\\S+\\.\\S+\$")
+        return email.matches(emailRegex)
     }
 
     companion object {

@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -36,25 +37,34 @@ class SearchFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-         super.onViewCreated(view, savedInstanceState)
+        super.onViewCreated(view, savedInstanceState)
 
         observeViewModel()
     }
 
     private fun observeViewModel() {
-        binding.etSearch.setOnEditorActionListener { v, actionId, event ->
+        binding.etSearch.addTextChangedListener { text ->
+            val query = text.toString().trim().toLowerCase()
+
+            if (query.length >= 3) {
+                viewLifecycleOwner.lifecycleScope.launch {
+                    viewModel.searchDataByQuery(query)
+                }
+            }
+        }
+
+        binding.etSearch.setOnEditorActionListener { v, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
-                val query = v.text.toString().toLowerCase()
+                val query = v.text.toString().trim().toLowerCase()
 
-                hideKeyboard()
-
-//                 Launch a coroutine
                 viewLifecycleOwner.lifecycleScope.launch {
                     viewModel.searchDataByQuery(query)
                 }
 
+                hideKeyboard()
                 return@setOnEditorActionListener true
             }
+
             false
         }
 
@@ -92,7 +102,8 @@ class SearchFragment : Fragment() {
         }
 
     private fun hideKeyboard() {
-        val imm = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        val imm =
+            requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(binding.etSearch.windowToken, 0)
     }
 }

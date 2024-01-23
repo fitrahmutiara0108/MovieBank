@@ -1,4 +1,4 @@
-# Movie Bank
+<h1 align="center">Movie Bank</h1>
 
 ## Tech Stack & Open-source Libraries
 

@@ -45,6 +45,7 @@ class MovieDetailViewModel : ViewModel() {
             }
         }
     }
+
 }
 
 

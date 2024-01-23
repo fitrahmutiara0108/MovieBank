@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mandiri.moviebank.R
 import com.mandiri.moviebank.databinding.HomeMainActivityBinding
-import com.mandiri.moviebank.presentation.BookmarkFragment
+import com.mandiri.moviebank.presentation.bookmark.BookmarkFragment
 import com.mandiri.moviebank.presentation.profile.ProfileFragment
 
 class HomeMainActivity : AppCompatActivity() {

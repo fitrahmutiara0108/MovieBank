@@ -19,8 +19,10 @@ import com.mandiri.moviebank.presentation.home.viewmodel.HomeViewModel
 import com.mandiri.moviebank.presentation.movie.MovieDetailActivity
 import com.mandiri.moviebank.presentation.movie.SearchFragment
 
-class HomeFragment(private val fragmentReplacer: (Fragment) -> Unit) : Fragment() {
+class HomeFragment(private var fragmentReplacer: (Fragment) -> Unit) : Fragment() {
+//    constructor() : this(null) {}
     private var _binding: FragmentHomeBinding? = null
+
 
     private val binding get() = _binding!!
 

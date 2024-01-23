@@ -6,6 +6,7 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.mandiri.moviebank.R
 import com.mandiri.moviebank.adapter.ActorAdapter
@@ -14,7 +15,10 @@ import com.mandiri.moviebank.data.network.response.Backdrop
 import com.mandiri.moviebank.data.network.response.Cast
 import com.mandiri.moviebank.databinding.ActivityDetailMovieBinding
 import com.mandiri.moviebank.model.MovieDetailModel
+import com.mandiri.moviebank.presentation.bookmark.BookmarkViewModelFactory
+import com.mandiri.moviebank.presentation.bookmark.viewmodel.BookmarkViewModel
 import com.mandiri.moviebank.presentation.movie.viewmodel.MovieDetailViewModel
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Locale
 import kotlin.math.ln
@@ -26,6 +30,10 @@ class MovieDetailActivity() : AppCompatActivity() {
     private lateinit var data: MovieDetailModel
 
     private val viewModel: MovieDetailViewModel by viewModels()
+    private val viewModelBookmark: BookmarkViewModel by viewModels {
+        BookmarkViewModelFactory(application)
+    }
+
 
     private var movieId: Int? = 0
 
@@ -50,6 +58,18 @@ class MovieDetailActivity() : AppCompatActivity() {
         binding.ivPlay.setOnClickListener {
             playVideo()
         }
+
+        binding.ivBookmark.setOnClickListener {
+            lifecycleScope.launch {
+                val isSaved = viewModelBookmark.isMovieSaved(movieId ?: 0)
+                if (isSaved) {
+                    viewModelBookmark.unsaveMovie(movieId ?: 0, data)
+                } else {
+                    viewModelBookmark.saveMovie(data)
+                }
+            }
+        }
+
 
         movieId = intent.getIntExtra("MOVIE_ID", -1)
 
@@ -121,6 +141,7 @@ class MovieDetailActivity() : AppCompatActivity() {
             .error(R.drawable.ic_error)
             .into(binding.ivImage)
     }
+
 
     private fun numberFormatter(count: Long): String {
         if (count < 1000) return "" + count

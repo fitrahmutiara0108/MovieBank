@@ -2,6 +2,7 @@ package com.mandiri.moviebank.presentation.movie
 
 import PlayVideoFragment
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -46,6 +47,8 @@ class MovieDetailActivity() : AppCompatActivity() {
         binding = ActivityDetailMovieBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        movieId = intent.getIntExtra("MOVIE_ID", -1)
+
         binding.ivBack.setOnClickListener {
             onBackPressed()
         }
@@ -58,21 +61,39 @@ class MovieDetailActivity() : AppCompatActivity() {
             playVideo()
         }
 
-        binding.ivBookmark.setOnClickListener {
-            lifecycleScope.launch {
-                val isSaved = viewModelBookmark.isMovieSaved(movieId ?: 0)
+        var isSaved = false
+
+        Log.d("tiara", "movieId $movieId")
+
+        viewModelBookmark.isMovieSaved(movieId ?: 0)
+
+
+        viewModelBookmark.isMovieSaved.observe(this@MovieDetailActivity) {
+            isSaved = it
+            Log.d("tiara", "isSaved $isSaved")
+            if (isSaved) {
                 binding.ivBookmark.setImageResource(R.drawable.bookmark_fill_svgrepo_com)
+            } else {
+                binding.ivBookmark.setImageResource(R.drawable.bookmark_svgrepo_com)
+            }
+        }
+
+
+
+        binding.ivBookmark.setOnClickListener {
+            binding.ivBookmark.setImageResource(R.drawable.bookmark_fill_svgrepo_com)
+
+            lifecycleScope.launch {
                 if (isSaved) {
                     viewModelBookmark.unsaveMovie(movieId ?: 0, data)
                 } else {
                     viewModelBookmark.saveMovie(data)
                 }
-                viewModelBookmark.loadSavedMovies()
+
             }
         }
 
 
-        movieId = intent.getIntExtra("MOVIE_ID", -1)
 
         setupView()
     }

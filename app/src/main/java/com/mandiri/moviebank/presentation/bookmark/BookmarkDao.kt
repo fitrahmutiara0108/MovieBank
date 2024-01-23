@@ -10,7 +10,7 @@ import com.mandiri.moviebank.data.local.BookmarkEntity
 @Dao
 interface BookmarkDao {
     @Query("SELECT * FROM bookmark")
-    fun getAllBookmarks(): List<BookmarkEntity>
+    suspend fun getAllBookmarks(): List<BookmarkEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertBookmark(bookmark: BookmarkEntity)

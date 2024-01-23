@@ -9,9 +9,8 @@ import androidx.lifecycle.viewModelScope
 import com.mandiri.moviebank.data.local.BookmarkEntity
 import com.mandiri.moviebank.model.MovieDetailModel
 import com.mandiri.moviebank.presentation.bookmark.AppDatabase
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class BookmarkViewModel (
     application: Application
@@ -24,36 +23,50 @@ class BookmarkViewModel (
 
     private val bookmarkDao = AppDatabase.getDatabase(application).bookmarkDao()
 
+    init {
+        loadSavedMovies()
+    }
+
     fun loadSavedMovies() {
         viewModelScope.launch {
-            _savedMovies.postValue(withContext(Dispatchers.IO) {
-                bookmarkDao.getAllBookmarks()
-            })
+            val bookmark = bookmarkDao.getAllBookmarks()
+            Log.d("tiara", "Bookmark $bookmark")
+            _savedMovies.value = bookmark
+            Log.d("tiara", "saved movies ${savedMovies.value}")
         }
     }
 
+    fun isMovieSaved(movieId: Int) {
+        Log.d("tiara", "isMovieSaved")
 
-    suspend fun isMovieSaved(movieId: Int): Boolean {
         // Use Dispatchers.IO to perform database operations in the background
-        return withContext(Dispatchers.IO) {
-            val savedMovies = _savedMovies.value
-            savedMovies?.any { it.id == movieId } == true
+        viewModelScope.launch {
+            loadSavedMovies()
+            // Delay to wait for the value to be updated
+            delay(100)
+
+            val savedMoviesData = savedMovies.value
+            Log.d("tiara", "list saved ${savedMovies.value}")
+            val result = savedMoviesData?.any { it.id == movieId } == true
+            Log.d("tiara", result.toString())
+            _isMovieSaved.postValue(result)
         }
     }
 
-    suspend fun saveMovie(movie: MovieDetailModel) {
-        withContext(Dispatchers.IO) {
+
+    fun saveMovie(movie: MovieDetailModel) {
+        viewModelScope.launch {
             val bookmarkEntity = movie.toBookmarkEntity()
             bookmarkDao.insertBookmark(bookmarkEntity)
-            loadSavedMovies()
+            isMovieSaved(movie.id)
             Log.d("BookmarkViewModel", "Movie saved: ${movie.title}")
         }
     }
 
-    suspend fun unsaveMovie(movieId: Int, movie: MovieDetailModel) {
-        withContext(Dispatchers.IO) {
+    fun unsaveMovie(movieId: Int, movie: MovieDetailModel) {
+        viewModelScope.launch {
             bookmarkDao.deleteBookmark(movieId)
-            loadSavedMovies()
+            isMovieSaved(movieId)
         }
     }
 

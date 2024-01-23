@@ -6,7 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mandiri.moviebank.R
 import com.mandiri.moviebank.data.local.BookmarkEntity
-import com.mandiri.moviebank.databinding.ItemMovieBinding
+import com.mandiri.moviebank.databinding.ItemMovieSearchBinding
+import java.text.DecimalFormat
 
 class BookmarkAdapter : RecyclerView.Adapter<BookmarkAdapter.ViewHolder>() {
     private var data: List<BookmarkEntity> = listOf()
@@ -21,7 +22,7 @@ class BookmarkAdapter : RecyclerView.Adapter<BookmarkAdapter.ViewHolder>() {
         notifyDataSetChanged()
     }
 
-    inner class ViewHolder(private val binding: ItemMovieBinding) :
+    inner class ViewHolder(private val binding: ItemMovieSearchBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: BookmarkEntity) {
             itemView.apply {
@@ -30,7 +31,8 @@ class BookmarkAdapter : RecyclerView.Adapter<BookmarkAdapter.ViewHolder>() {
                     .placeholder(R.drawable.ic_loading)
                     .into(binding.ivRecentMovie)
                 binding.tvMovieTitle.text=data.original_title
-                binding.tvRating.text="Rating: ${data.vote_average}"
+                val decimalFormat = DecimalFormat("#.#")
+                binding.tvRating.text="Rating: ${decimalFormat.format(data.vote_average)}/10"
                 setOnClickListener {
                     itemClickListener.invoke(data.id)
                 }
@@ -41,7 +43,7 @@ class BookmarkAdapter : RecyclerView.Adapter<BookmarkAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            ItemMovieBinding.inflate(
+            ItemMovieSearchBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false

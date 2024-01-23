@@ -9,14 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.mandiri.moviebank.adapter.BookmarkAdapter
 import com.mandiri.moviebank.data.local.BookmarkEntity
 import com.mandiri.moviebank.databinding.FragmentBookmarkBinding
 import com.mandiri.moviebank.presentation.bookmark.viewmodel.BookmarkViewModel
 import com.mandiri.moviebank.presentation.movie.MovieDetailActivity
-import kotlinx.coroutines.launch
 
 
 class BookmarkFragment : Fragment() {
@@ -36,26 +34,27 @@ class BookmarkFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        observeViewModel()
     }
 
     private fun observeViewModel() {
+        Log.d("tiara", "before load")
+
         val movieId = arguments?.getInt("MOVIE_ID", -1) ?: -1
+        viewModel.loadSavedMovies()
+        Log.d("tiara", "after load")
 
-        viewLifecycleOwner.lifecycleScope.launch {
-            val isMovieSaved = viewModel.isMovieSaved(movieId)
+        viewModel.savedMovies.observe(viewLifecycleOwner) { bookmarkEntities ->
+            Log.d("tiara", "on observer")
 
-            if (isMovieSaved) {
-                viewModel.loadSavedMovies()
-            }
-
-            viewModel.savedMovies.observe(viewLifecycleOwner) { bookmarkEntities ->
-                setupViewBookmark(bookmarkEntities)
-                Log.d("MovieDetailActivity", "Saved movies changed: $bookmarkEntities")
-            }
-
+            setupViewBookmark(bookmarkEntities)
+            Log.d("MovieDetailActivity", "Saved movies changed: $bookmarkEntities")
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        observeViewModel()
     }
 
     private fun setupViewBookmark(data: List<BookmarkEntity>) {

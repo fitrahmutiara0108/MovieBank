@@ -34,7 +34,6 @@ class MovieDetailActivity() : AppCompatActivity() {
         BookmarkViewModelFactory(application)
     }
 
-
     private var movieId: Int? = 0
 
     companion object {
@@ -62,11 +61,13 @@ class MovieDetailActivity() : AppCompatActivity() {
         binding.ivBookmark.setOnClickListener {
             lifecycleScope.launch {
                 val isSaved = viewModelBookmark.isMovieSaved(movieId ?: 0)
+                binding.ivBookmark.setImageResource(R.drawable.bookmark_fill_svgrepo_com)
                 if (isSaved) {
                     viewModelBookmark.unsaveMovie(movieId ?: 0, data)
                 } else {
                     viewModelBookmark.saveMovie(data)
                 }
+                viewModelBookmark.loadSavedMovies()
             }
         }
 

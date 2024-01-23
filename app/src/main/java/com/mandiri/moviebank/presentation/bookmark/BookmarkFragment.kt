@@ -3,6 +3,7 @@ package com.mandiri.moviebank.presentation.bookmark
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -51,13 +52,14 @@ class BookmarkFragment : Fragment() {
 
             viewModel.savedMovies.observe(viewLifecycleOwner) { bookmarkEntities ->
                 setupViewBookmark(bookmarkEntities)
+                Log.d("MovieDetailActivity", "Saved movies changed: $bookmarkEntities")
             }
+
         }
     }
 
-
-
     private fun setupViewBookmark(data: List<BookmarkEntity>) {
+        Log.d("BookmarkFragment", "Setting up bookmark view with data: $data")
         val bookmarkAdapter = BookmarkAdapter()
         bookmarkAdapter.setDataMovie(data)
 
@@ -66,6 +68,7 @@ class BookmarkFragment : Fragment() {
         }
 
         binding.bookmark.rvBookmark.apply {
+            Log.d("BookmarkFragment", "Setting adapter and layoutManager")
             adapter = bookmarkAdapter
             layoutManager = GridLayoutManager(activity, 2)
         }
@@ -76,8 +79,6 @@ class BookmarkFragment : Fragment() {
         intent.putExtra("MOVIE_ID", movieId)
         activity.startActivity(intent)
     }
-
-
 
     override fun onDestroyView() {
         super.onDestroyView()

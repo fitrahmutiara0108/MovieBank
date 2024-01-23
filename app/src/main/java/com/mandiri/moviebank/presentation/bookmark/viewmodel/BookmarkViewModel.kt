@@ -1,6 +1,7 @@
 package com.mandiri.moviebank.presentation.bookmark.viewmodel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -31,6 +32,7 @@ class BookmarkViewModel (
         }
     }
 
+
     suspend fun isMovieSaved(movieId: Int): Boolean {
         // Use Dispatchers.IO to perform database operations in the background
         return withContext(Dispatchers.IO) {
@@ -44,6 +46,7 @@ class BookmarkViewModel (
             val bookmarkEntity = movie.toBookmarkEntity()
             bookmarkDao.insertBookmark(bookmarkEntity)
             loadSavedMovies()
+            Log.d("BookmarkViewModel", "Movie saved: ${movie.title}")
         }
     }
 

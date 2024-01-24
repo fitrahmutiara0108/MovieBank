@@ -6,9 +6,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mandiri.moviebank.data.local.BookmarkEntity
+import com.mandiri.moviebank.model.BookmarkEntity
 import com.mandiri.moviebank.model.MovieDetailModel
-import com.mandiri.moviebank.presentation.bookmark.AppDatabase
+import com.mandiri.moviebank.data.local.AppDatabase
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

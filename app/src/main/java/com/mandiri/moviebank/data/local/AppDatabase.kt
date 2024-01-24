@@ -1,10 +1,10 @@
-package com.mandiri.moviebank.presentation.bookmark
+package com.mandiri.moviebank.data.local
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.mandiri.moviebank.data.local.BookmarkEntity
+import com.mandiri.moviebank.model.BookmarkEntity
 
 @Database(entities = [BookmarkEntity::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {

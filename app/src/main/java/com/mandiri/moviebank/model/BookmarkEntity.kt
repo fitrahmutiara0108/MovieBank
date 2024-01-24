@@ -1,4 +1,4 @@
-package com.mandiri.moviebank.data.local
+package com.mandiri.moviebank.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

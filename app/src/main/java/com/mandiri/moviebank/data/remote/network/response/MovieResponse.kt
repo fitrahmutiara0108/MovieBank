@@ -1,4 +1,4 @@
-package com.mandiri.moviebank.data.network.response
+package com.mandiri.moviebank.data.remote.network.response
 
 import com.mandiri.moviebank.model.PopularMovieModel
 

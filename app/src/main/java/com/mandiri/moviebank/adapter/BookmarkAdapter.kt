@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mandiri.moviebank.R
-import com.mandiri.moviebank.data.local.BookmarkEntity
+import com.mandiri.moviebank.model.BookmarkEntity
 import com.mandiri.moviebank.databinding.ItemMovieSearchBinding
 import java.text.DecimalFormat
 

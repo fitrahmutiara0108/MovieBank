@@ -4,12 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mandiri.moviebank.data.network.api.ApiClient
-import com.mandiri.moviebank.data.network.response.Backdrop
-import com.mandiri.moviebank.data.network.response.Cast
-import com.mandiri.moviebank.data.network.response.Result
-import com.mandiri.moviebank.data.repository.MovieDetailRepository
+import com.mandiri.moviebank.data.remote.network.api.ApiClient
+import com.mandiri.moviebank.data.remote.network.response.Backdrop
+import com.mandiri.moviebank.data.remote.network.response.Cast
+import com.mandiri.moviebank.data.remote.network.response.Result
+import com.mandiri.moviebank.data.remote.repository.MovieDetailRepository
 import com.mandiri.moviebank.model.MovieDetailModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class MovieDetailViewModel : ViewModel() {
@@ -33,6 +34,7 @@ class MovieDetailViewModel : ViewModel() {
         _progress.postValue(true)
 
         viewModelScope.launch {
+            delay(100)
             try{
                 _authorsList.postValue(movieRepository.getAuthorsById(id).body()?.cast)
                 _images.postValue(movieRepository.getMovieImages(id).backdrops)

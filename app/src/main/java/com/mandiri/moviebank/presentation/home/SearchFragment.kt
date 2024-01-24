@@ -1,4 +1,4 @@
-package com.mandiri.moviebank.presentation.movie
+package com.mandiri.moviebank.presentation.home
 
 import android.app.Activity
 import android.content.Context
@@ -18,6 +18,7 @@ import com.mandiri.moviebank.adapter.SearchMovieAdapter
 import com.mandiri.moviebank.databinding.FragmentSearchBinding
 import com.mandiri.moviebank.model.SearchMovieModel
 import com.mandiri.moviebank.presentation.home.viewmodel.HomeViewModel
+import com.mandiri.moviebank.presentation.movie.MovieDetailActivity
 import kotlinx.coroutines.launch
 
 
@@ -38,6 +39,18 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.progressBar.visibility = View.VISIBLE
+
+        viewModel.progress.observe(viewLifecycleOwner, { isLoading ->
+            if (isLoading) {
+                binding.progressBar.visibility = View.VISIBLE
+                binding.rvMovieResult.visibility = View.GONE
+            } else {
+                binding.progressBar.visibility = View.GONE
+                binding.rvMovieResult.visibility = View.VISIBLE
+            }
+        })
 
         observeViewModel()
     }

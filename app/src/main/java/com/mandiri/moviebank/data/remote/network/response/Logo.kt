@@ -1,6 +1,6 @@
-package com.mandiri.moviebank.data.network.response
+package com.mandiri.moviebank.data.remote.network.response
 
-data class Backdrop(
+data class Logo(
     val aspect_ratio: Double,
     val file_path: String,
     val height: Int,

@@ -1,4 +1,4 @@
-package com.mandiri.moviebank.data.network.api
+package com.mandiri.moviebank.data.remote.network.api
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -17,12 +17,12 @@ object ApiClient {
             readTimeout(300, TimeUnit.SECONDS)
         }.build()
 
-    val movieApiService: MovieApiService by lazy {
+    val movieApiService: com.mandiri.moviebank.data.remote.network.api.MovieApiService by lazy {
         Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(com.mandiri.moviebank.data.remote.network.api.ApiClient.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
-            .client(provideOkHttpClient)
+            .client(com.mandiri.moviebank.data.remote.network.api.ApiClient.provideOkHttpClient)
             .build()
-            .create(MovieApiService::class.java)
+            .create(com.mandiri.moviebank.data.remote.network.api.MovieApiService::class.java)
     }
 }

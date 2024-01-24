@@ -1,11 +1,11 @@
-package com.mandiri.moviebank.data.network.api
+package com.mandiri.moviebank.data.remote.network.api
 
-import com.mandiri.moviebank.data.network.response.AuthorResponse
-import com.mandiri.moviebank.data.network.response.Images
-import com.mandiri.moviebank.data.network.response.MovieResponse
-import com.mandiri.moviebank.data.network.response.SearchResponse
-import com.mandiri.moviebank.data.network.response.TopMovieResponse
-import com.mandiri.moviebank.data.network.response.VideoResponse
+import com.mandiri.moviebank.data.remote.network.response.AuthorResponse
+import com.mandiri.moviebank.data.remote.network.response.Images
+import com.mandiri.moviebank.data.remote.network.response.MovieResponse
+import com.mandiri.moviebank.data.remote.network.response.SearchResponse
+import com.mandiri.moviebank.data.remote.network.response.TopMovieResponse
+import com.mandiri.moviebank.data.remote.network.response.VideoResponse
 import com.mandiri.moviebank.model.MovieDetailModel
 import retrofit2.Response
 import retrofit2.http.GET

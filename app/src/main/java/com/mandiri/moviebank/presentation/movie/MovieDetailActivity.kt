@@ -12,11 +12,11 @@ import com.bumptech.glide.Glide
 import com.mandiri.moviebank.R
 import com.mandiri.moviebank.adapter.ActorAdapter
 import com.mandiri.moviebank.adapter.ImageAdapter
-import com.mandiri.moviebank.data.network.response.Backdrop
-import com.mandiri.moviebank.data.network.response.Cast
+import com.mandiri.moviebank.data.remote.network.response.Backdrop
+import com.mandiri.moviebank.data.remote.network.response.Cast
 import com.mandiri.moviebank.databinding.ActivityDetailMovieBinding
 import com.mandiri.moviebank.model.MovieDetailModel
-import com.mandiri.moviebank.presentation.bookmark.BookmarkViewModelFactory
+import com.mandiri.moviebank.module.BookmarkViewModelFactory
 import com.mandiri.moviebank.presentation.bookmark.viewmodel.BookmarkViewModel
 import com.mandiri.moviebank.presentation.movie.viewmodel.MovieDetailViewModel
 import kotlinx.coroutines.launch
@@ -93,17 +93,23 @@ class MovieDetailActivity() : AppCompatActivity() {
             }
         }
 
-
-
         setupView()
     }
 
     private fun setupView() {
+        binding.progresBar.visibility = View.VISIBLE
+
         viewModel.progress.observe(this, { isLoading ->
             if (isLoading) {
                 binding.progresBar.visibility = View.VISIBLE
+                binding.appbar.visibility = View.GONE
+                binding.nestedScrollView.visibility = View.GONE
+                binding.btnPlay.visibility = View.GONE
             } else {
                 binding.progresBar.visibility = View.GONE
+                binding.appbar.visibility = View.VISIBLE
+                binding.nestedScrollView.visibility = View.VISIBLE
+                binding.btnPlay.visibility = View.VISIBLE
             }
         })
 

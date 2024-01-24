@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <!--Profile Photo-->
@@ -9,38 +9,38 @@
         android:id="@+id/vProfilePhoto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_margin="20dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:src="@drawable/profile_picture"
             android:layout_gravity="center"
-            app:tint="#6200ED"/>
+            android:src="@drawable/profile_picture"
+            app:tint="#6200ED" />
 
         <TextView
             android:id="@+id/tvProfileName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:gravity="center"
             android:text="User Name"
-            android:layout_marginTop="10dp"
-            android:textStyle="bold"
+            android:textColor="#6200ED"
             android:textSize="18sp"
-            android:textColor="#6200ED"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvProfileEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginVertical="2dp"
             android:gravity="center"
-            android:text="Email address"
-            android:layout_marginVertical="2dp" />
+            android:text="Email address" />
 
     </LinearLayout>
 
@@ -48,10 +48,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_margin="20dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/vProfilePhoto">
 
         <!--Name-->
@@ -59,35 +59,38 @@
             android:id="@+id/tvTitleName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Name"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="10dp"
+            android:text="Name" />
+
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#193700B2"
             app:cardCornerRadius="10dp"
-            app:cardElevation="1dp">
+            app:cardElevation="3dp"
+            android:layout_margin="2dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#193700B2"
                 android:orientation="horizontal"
-                android:layout_margin="10dp">
+                android:padding="10dp">
 
 
                 <ImageView
                     android:layout_width="15dp"
                     android:layout_height="15dp"
+                    android:layout_gravity="center_vertical"
                     android:src="@drawable/user_svgrepo_com"
-                    app:tint="#858585"
-                    android:layout_gravity="center_vertical"/>
+                    app:tint="#858585" />
 
                 <TextView
                     android:id="@+id/tvName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="lorem ipsum"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginLeft="10dp"
-                    android:layout_gravity="center_vertical"/>
+                    android:text="lorem ipsum" />
 
             </LinearLayout>
 
@@ -99,35 +102,36 @@
             android:id="@+id/tvTitleEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Email"
-            android:layout_marginVertical="10dp"/>
+            android:layout_marginVertical="10dp"
+            android:text="Email" />
+
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#193700B2"
             app:cardCornerRadius="10dp"
-            app:cardElevation="1dp">
+            app:cardElevation="3dp"
+            android:layout_margin="2dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="10dp">
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="15dp"
                     android:layout_height="15dp"
+                    android:layout_gravity="center_vertical"
                     android:src="@drawable/user_svgrepo_com"
-                    app:tint="#858585"
-                    android:layout_gravity="center_vertical"/>
+                    app:tint="#858585" />
 
                 <TextView
                     android:id="@+id/tvEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="lorem ipsum"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginLeft="10dp"
-                    android:layout_gravity="center_vertical"/>
+                    android:text="lorem ipsum" />
 
             </LinearLayout>
 
@@ -139,35 +143,36 @@
             android:id="@+id/tvTitlePhoneNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Phone Number"
-            android:layout_marginVertical="10dp"/>
+            android:layout_marginVertical="10dp"
+            android:text="Phone Number" />
+
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#193700B2"
             app:cardCornerRadius="10dp"
-            app:cardElevation="1dp">
+            app:cardElevation="3dp"
+            android:layout_margin="2dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="10dp">
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="15dp"
                     android:layout_height="15dp"
+                    android:layout_gravity="center_vertical"
                     android:src="@drawable/user_svgrepo_com"
-                    app:tint="#858585"
-                    android:layout_gravity="center_vertical"/>
+                    app:tint="#858585" />
 
                 <TextView
                     android:id="@+id/tvPhoneNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="lorem ipsum"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginLeft="10dp"
-                    android:layout_gravity="center_vertical"/>
+                    android:text="lorem ipsum" />
 
             </LinearLayout>
 

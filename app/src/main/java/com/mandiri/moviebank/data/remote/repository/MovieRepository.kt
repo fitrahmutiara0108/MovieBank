@@ -1,9 +1,9 @@
-package com.mandiri.moviebank.data.repository
+package com.mandiri.moviebank.data.remote.repository
 
-import com.mandiri.moviebank.data.network.api.MovieApiService
-import com.mandiri.moviebank.data.network.response.MovieResponse
-import com.mandiri.moviebank.data.network.response.SearchResponse
-import com.mandiri.moviebank.data.network.response.TopMovieResponse
+import com.mandiri.moviebank.data.remote.network.api.MovieApiService
+import com.mandiri.moviebank.data.remote.network.response.MovieResponse
+import com.mandiri.moviebank.data.remote.network.response.SearchResponse
+import com.mandiri.moviebank.data.remote.network.response.TopMovieResponse
 import retrofit2.Response
 
 class MovieRepository(private val movieApiService: MovieApiService) {

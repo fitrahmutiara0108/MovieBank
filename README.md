@@ -37,4 +37,8 @@
   - Display data from registration.
 
 - **Demo**
-  - https://github.com/fitrahmutiara0108/MovieBank/assets/81247727/196f9b88-1f05-48a4-837a-b9f3af6792c4
+
+https://github.com/fitrahmutiara0108/MovieBank/assets/81247727/196f9b88-1f05-48a4-837a-b9f3af6792c4
+ 
+ 
+

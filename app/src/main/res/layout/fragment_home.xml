@@ -15,6 +15,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
+            android:id="@+id/homePage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
@@ -43,10 +44,7 @@
                 layout="@layout/component_top_movies"
                 android:layout_margin="20dp"/>
 
-
         </LinearLayout>
-
-
 
     </androidx.core.widget.NestedScrollView>
 

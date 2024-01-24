@@ -42,7 +42,7 @@ class HomeViewModel: ViewModel() {
     }
     suspend fun searchDataByQuery(query: String){
         _progress.postValue(true)
-        delay(100)
+        delay(1000)
         try {
             viewModelScope.launch {
                 _searchedMovie.postValue(movieRepository.getSearchedMovie(query).body()?.results)

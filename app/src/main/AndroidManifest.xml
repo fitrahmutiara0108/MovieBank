@@ -28,7 +28,7 @@
         <activity android:name=".presentation.home.HomeMainActivity" />
         <activity android:name=".presentation.home.HomeFragment" />
         <activity android:name=".presentation.movie.MovieDetailActivity" />
-        <activity android:name=".presentation.movie.SearchFragment" />
+        <activity android:name=".presentation.home.SearchFragment" />
     </application>
 
 

@@ -17,7 +17,6 @@ import com.mandiri.moviebank.model.PopularMovieModel
 import com.mandiri.moviebank.model.TopMovieModel
 import com.mandiri.moviebank.presentation.home.viewmodel.HomeViewModel
 import com.mandiri.moviebank.presentation.movie.MovieDetailActivity
-import com.mandiri.moviebank.presentation.movie.SearchFragment
 
 class HomeFragment(private var fragmentReplacer: (Fragment) -> Unit) : Fragment() {
 //    constructor() : this(null) {}

@@ -6,7 +6,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mandiri.moviebank.R
-import com.mandiri.moviebank.data.network.response.Cast
+import com.mandiri.moviebank.data.remote.network.response.Cast
 import com.mandiri.moviebank.databinding.ItemImageBinding
 
 class ActorAdapter(

@@ -1,4 +1,4 @@
-package com.mandiri.moviebank.data.network.response
+package com.mandiri.moviebank.data.remote.network.response
 
 data class Images(
     val backdrops: List<Backdrop>,

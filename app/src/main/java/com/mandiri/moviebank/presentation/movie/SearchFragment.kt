@@ -39,6 +39,18 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.progressBar.visibility = View.VISIBLE
+
+        viewModel.progress.observe(viewLifecycleOwner, { isLoading ->
+            if (isLoading) {
+                binding.progressBar.visibility = View.VISIBLE
+                binding.nestedScrollView.visibility = View.GONE
+            } else {
+                binding.progressBar.visibility = View.GONE
+                binding.nestedScrollView.visibility = View.VISIBLE
+            }
+        })
+
         observeViewModel()
     }
 

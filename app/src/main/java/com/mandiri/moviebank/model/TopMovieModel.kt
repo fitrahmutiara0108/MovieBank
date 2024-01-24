@@ -1,7 +1,7 @@
 package com.mandiri.moviebank.model
 
-import com.mandiri.moviebank.data.network.response.Genre
-import com.mandiri.moviebank.data.network.response.ProductionCompany
+import com.mandiri.moviebank.data.remote.network.response.Genre
+import com.mandiri.moviebank.data.remote.network.response.ProductionCompany
 import java.io.Serializable
 
 data class TopMovieModel(

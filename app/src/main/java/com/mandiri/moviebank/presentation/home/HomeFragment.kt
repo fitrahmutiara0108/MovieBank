@@ -36,7 +36,19 @@ class HomeFragment(private var fragmentReplacer: (Fragment) -> Unit) : Fragment(
         return binding.root
     }
 
-    private fun setupView() {
+    fun setupView() {
+        binding.progresBar.visibility = View.VISIBLE
+
+        viewModel.progress.observe(viewLifecycleOwner, { isLoading ->
+            if (isLoading) {
+                binding.progresBar.visibility = View.VISIBLE
+                binding.nestedScrollView.visibility = View.GONE
+            } else {
+                binding.progresBar.visibility = View.GONE
+                binding.nestedScrollView.visibility = View.VISIBLE
+            }
+        })
+
         viewModel.setData()
         observeViewModel()
     }

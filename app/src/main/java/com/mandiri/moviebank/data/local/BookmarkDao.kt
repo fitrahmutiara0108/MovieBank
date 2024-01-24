@@ -1,10 +1,10 @@
-package com.mandiri.moviebank.presentation.bookmark
+package com.mandiri.moviebank.data.local
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.mandiri.moviebank.data.local.BookmarkEntity
+import com.mandiri.moviebank.model.BookmarkEntity
 
 
 @Dao

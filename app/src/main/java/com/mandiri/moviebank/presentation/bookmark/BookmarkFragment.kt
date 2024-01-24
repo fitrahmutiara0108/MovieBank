@@ -11,8 +11,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.mandiri.moviebank.adapter.BookmarkAdapter
-import com.mandiri.moviebank.data.local.BookmarkEntity
+import com.mandiri.moviebank.model.BookmarkEntity
 import com.mandiri.moviebank.databinding.FragmentBookmarkBinding
+import com.mandiri.moviebank.module.BookmarkViewModelFactory
 import com.mandiri.moviebank.presentation.bookmark.viewmodel.BookmarkViewModel
 import com.mandiri.moviebank.presentation.movie.MovieDetailActivity
 

@@ -1,7 +1,7 @@
-package com.mandiri.moviebank.data.repository
+package com.mandiri.moviebank.data.remote.repository
 
-import com.mandiri.moviebank.data.network.response.Backdrop
-import com.mandiri.moviebank.data.network.response.Cast
+import com.mandiri.moviebank.data.remote.network.response.Backdrop
+import com.mandiri.moviebank.data.remote.network.response.Cast
 import com.mandiri.moviebank.model.MovieDetailModel
 import kotlinx.coroutines.flow.Flow
 

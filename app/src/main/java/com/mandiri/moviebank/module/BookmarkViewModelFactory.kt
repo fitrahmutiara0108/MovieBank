@@ -1,4 +1,4 @@
-package com.mandiri.moviebank.presentation.bookmark
+package com.mandiri.moviebank.module
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
